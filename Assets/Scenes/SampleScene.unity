@@ -210,7 +210,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 292912241}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -166}
+  m_LocalPosition: {x: 0, y: 0, z: 52}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 555791043}
@@ -218,8 +218,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -9, y: 38}
-  m_SizeDelta: {x: 320, y: 90}
+  m_AnchoredPosition: {x: -18, y: 0.000015259}
+  m_SizeDelta: {x: 451.3098, y: 109.20221}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &292912243
 MonoBehaviour:
@@ -242,7 +242,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: b7931ee6f604b49a6b7006cfd5325aa5, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -254,7 +254,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u3053\u306E\u30B2\u30FC\u30E0\u306F\u307E\u3060\u3067\u304D\u305F\u3070\u304B\u308A\u3067\u3001\u306A\u306B\u3082\u3067\u304D\u307E\u305B\u3093\u3002\n\u3053\u306E\u30C6\u30AD\u30B9\u30C8\u3092\u773A\u3081\u308B\u3053\u3068\u304C\u3001\u3042\u306A\u305F\u306B\u3067\u304D\u308B\u5168\u3066\u306E\u3053\u3068\u3067\u3059\u3002\nTwitter:
+  m_Text: "\u3053\u306E\u30B2\u30FC\u30E0\u306F\u307E\u3060\u3067\u304D\u305F\u3070\u304B\u308A\u3067\u3001\u306A\u306B\u3082\u3067\u304D\u307E\u305B\u3093\u3002\n\u3053\u306E\u30C6\u30AD\u30B9\u30C8\u3092\u773A\u3081\u308B\u3053\u3068\u3057\u304B\u3067\u304D\u307E\u305B\u3093\u3002\nTwitter:
     @tetsufe_"
 --- !u!222 &292912244
 CanvasRenderer:
