@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 
 class LoginData
 {
@@ -23,6 +24,7 @@ public class Login : MonoBehaviour
         else
         {
             Debug.Log(LoadAccessToken());
+            LoadMainScene();
         }
     }
 
@@ -51,6 +53,11 @@ public class Login : MonoBehaviour
     {
         return 
             PlayerPrefs.GetString(AccessTokenKey);
+    }
+
+    void LoadMainScene()
+    {
+        SceneManager.LoadScene("SampleScene");
     }
 
     // Update is called once per frame
