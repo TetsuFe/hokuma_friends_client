@@ -37,7 +37,21 @@ public class Login : MonoBehaviour
         yield return request.SendWebRequest();
         Debug.Log(request.downloadHandler.text);
         var loginData = JsonUtility.FromJson<LoginData>(request.downloadHandler.text);
-        Debug.Log(loginData.access_token);
+        SaveAccessToken(loginData.access_token);
+        var accessToken = LoadAccessToken();
+        Debug.Log(accessToken);
+    }
+    
+        const string AccessTokenKey = "accessTokenKey";
+    void SaveAccessToken(string accessTokan)
+    {
+        PlayerPrefs.SetString(AccessTokenKey, accessTokan);
+    }
+
+    string LoadAccessToken()
+    {
+        return 
+            PlayerPrefs.GetString(AccessTokenKey);
     }
 
     // Update is called once per frame
