@@ -20,7 +20,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c957fe5d-d56c-41f7-9de3-1367f355e2cf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.HokumaFriends/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HokumaFriends/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Auth/Login.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Auth/Login.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -91,7 +90,7 @@
       <workItem from="1601710730546" duration="3175000" />
       <workItem from="1601814721296" duration="183000" />
       <workItem from="1601814912041" duration="537000" />
-      <workItem from="1602368336615" duration="2549000" />
+      <workItem from="1602368336615" duration="2940000" />
     </task>
     <servers />
   </component>
