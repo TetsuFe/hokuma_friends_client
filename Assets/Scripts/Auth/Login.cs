@@ -25,6 +25,7 @@ public class Login : MonoBehaviour
         }
         else
         {
+            //PlayerPrefs.DeleteAll();
             // Debug.Log(LoadAccessToken());
             // LoadMainScene();
             LoadMyCharactersScene();
