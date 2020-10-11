@@ -35,7 +35,6 @@ namespace GachaController
                 //通信成功
                 Debug.Log(webRequest.downloadHandler.text);
                 var text = webRequest.downloadHandler.text;
-                Debug.Log(text);
                 var character = JsonUtility.FromJson<Character>(text);
                 setImage(character.characterId);
             }
@@ -52,12 +51,14 @@ namespace GachaController
             string path = "hokuma_" + characterId.ToString();
             Debug.Log(path);
             Sprite sprite = Resources.Load<Sprite>(path);
+            /*
             GameObject imageObject = GameObject.Find("Image");
 
             if (imageObject != null)
             {
                 receivedGachaCharacterImage = imageObject.GetComponent<Image>();
             }
+            */
 
             receivedGachaCharacterImage.sprite = sprite;
         }
