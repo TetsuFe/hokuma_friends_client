@@ -41,6 +41,7 @@ public class MyCharacters : MonoBehaviour
         yield return request.SendWebRequest();
         var myCharacters = JsonUtility.FromJson<MyCharactersData>(request.downloadHandler.text);
         Debug.Log(request.downloadHandler.text);
+        int i = 0;
         foreach (var e in myCharacters.myCharacters)
         {
             Debug.Log(e.characterId);
@@ -53,9 +54,13 @@ public class MyCharacters : MonoBehaviour
             trans.sizeDelta = new Vector2(150, 200); // custom size
 
             Image image = imgObject.AddComponent<Image>();
+            imgObject.transform.position = new Vector3(imgObject.transform.position.x + i * 150,
+                imgObject.transform.position.y, 1f);
+
             imgObject.transform.SetParent(canvas.transform);
             string path = "hokuma_" + e.characterId;
             image.sprite = Resources.Load<Sprite>(path);
+            i++;
         }
     }
 
