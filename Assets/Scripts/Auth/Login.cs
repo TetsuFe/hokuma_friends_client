@@ -4,6 +4,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 class LoginData
 {
@@ -14,14 +15,19 @@ class LoginData
 
 public class Login : MonoBehaviour
 {
+    [SerializeField] private InputField userIdField;
+
+    [SerializeField] private InputField passwordField;
+    [SerializeField] private Button submitButton;
+
     // Start is called before the first frame update
     void Start()
     {
         if (LoadAccessToken() ==
             "")
         {
-            Debug.Log("login");
-            StartCoroutine(Execute());
+            Debug.Log("not logged in");
+            // StartCoroutine(Execute());
         }
         else
         {
@@ -32,21 +38,34 @@ public class Login : MonoBehaviour
         }
     }
 
-    IEnumerator Execute()
+    public void Execute()
     {
-        var url = "http://localhost:8000/api/auth/login";
-        WWWForm form = new WWWForm();
-        form.AddField("email", "testtest4@email.com");
-        form.AddField("password", "satoshi0224");
-        var request = UnityWebRequest.Post(url, form);
-        yield return request.SendWebRequest();
-        // Debug.Log(request.downloadHandler.text);
-        var loginData = JsonUtility.FromJson<LoginData>(request.downloadHandler.text);
-        // Debug.Log(request.downloadHandler.text);
-        SaveAccessToken(loginData.access_token);
-        Debug.Log(loginData.access_token);
-        var accessToken = LoadAccessToken();
-        Debug.Log(accessToken);
+        StartCoroutine("ExecuteLogin");
+    }
+
+    IEnumerator ExecuteLogin()
+    {
+        var email = userIdField.text;
+        var password = passwordField.text;
+        Debug.Log(email);
+        Debug.Log(password);
+        if (email != "" && password != "")
+        {
+            var url = "http://localhost:8000/api/auth/login";
+            WWWForm form = new WWWForm();
+            form.AddField("email", email);
+            form.AddField("password", password);
+            var request = UnityWebRequest.Post(url, form);
+            yield return request.SendWebRequest();
+            // Debug.Log(request.downloadHandler.text);
+            var loginData = JsonUtility.FromJson<LoginData>(request.downloadHandler.text);
+            // Debug.Log(request.downloadHandler.text);
+            SaveAccessToken(loginData.access_token);
+            Debug.Log(loginData.access_token);
+            var accessToken = LoadAccessToken();
+            Debug.Log(accessToken);
+            SceneManager.LoadScene("LoginScene");
+        }
     }
 
     const string AccessTokenKey = "accessTokenKey";
