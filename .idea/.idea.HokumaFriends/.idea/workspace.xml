@@ -20,8 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c957fe5d-d56c-41f7-9de3-1367f355e2cf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Auth/SignupController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Auth/SignupController.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.HokumaFriends/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HokumaFriends/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.HokumaFriends/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HokumaFriends/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/LoginScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/LoginScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Auth/Login.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Auth/Login.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,6 +47,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/GachaController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MyCharacters/MyCharacters.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Auth/Login.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Auth/SignupController.cs" />
       </list>
     </option>
   </component>
@@ -127,6 +130,10 @@
     <state x="274" y="126" key="SettingsEditor/0.0.1680.1050/1680.0.1920.1080@0.0.1680.1050" timestamp="1602370082295" />
     <state x="274" y="141" key="SettingsEditor/0.23.1680.986@0.23.1680.986" timestamp="1601702955352" />
     <state x="274" y="141" key="SettingsEditor/0.23.1680.987@0.23.1680.987" timestamp="1601701438872" />
+    <state x="100" y="100" width="1480" height="850" key="VCS.FileHistoryDialog" timestamp="1602709304314">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="100" y="100" width="1480" height="850" key="VCS.FileHistoryDialog/0.0.1680.1050/1680.0.1920.1080@0.0.1680.1050" timestamp="1602709304314" />
     <state x="503" y="231" key="search.everywhere.popup" timestamp="1602390491217">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
