@@ -13,6 +13,11 @@ class LoginData
     public string token_type;
 }
 
+public class AccessTokenKey
+{
+ public static string accessTokenKey = "accessTokenKey";   
+}
+
 public class Login : MonoBehaviour
 {
     [SerializeField] private InputField userIdField;
@@ -68,17 +73,16 @@ public class Login : MonoBehaviour
         }
     }
 
-    const string AccessTokenKey = "accessTokenKey";
 
     void SaveAccessToken(string accessToken)
     {
-        PlayerPrefs.SetString(AccessTokenKey, accessToken);
+        PlayerPrefs.SetString(AccessTokenKey.accessTokenKey, accessToken);
     }
 
     string LoadAccessToken()
     {
         return
-            PlayerPrefs.GetString(AccessTokenKey);
+            PlayerPrefs.GetString(AccessTokenKey.accessTokenKey);
     }
 
     void LoadMainScene()
