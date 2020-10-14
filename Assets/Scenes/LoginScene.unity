@@ -729,7 +729,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u30E6\u30FC\u30B6ID\n"
+  m_Text: Email
 --- !u!222 &1365371136
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1288,5 +1288,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   userIdField: {fileID: 1681088859}
-  passwordField: {fileID: 1681088859}
+  passwordField: {fileID: 1016179822}
   submitButton: {fileID: 2008362053}
