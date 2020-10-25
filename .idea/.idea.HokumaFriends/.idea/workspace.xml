@@ -19,13 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c957fe5d-d56c-41f7-9de3-1367f355e2cf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Auth/SignupController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Auth/SignupController.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.HokumaFriends/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HokumaFriends/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.HokumaFriends/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HokumaFriends/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Auth/Login.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Auth/Login.cs" afterDir="false" />
-    </list>
+    <list default="true" id="c957fe5d-d56c-41f7-9de3-1367f355e2cf" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
