@@ -15,6 +15,7 @@
           </e>
           <e p="NewBehaviourScript.cs" t="Include" />
           <e p="NewBehaviourScript1.cs" t="Include" />
+          <e p="NewBehaviourScript2.cs" t="Include" />
         </e>
       </e>
       <e p="HokumaFriends.sln" t="IncludeFlat" />

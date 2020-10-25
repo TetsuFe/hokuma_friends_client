@@ -1,5 +1,4 @@
 using System.Collections;
-using UnityEditor.Compilation;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
@@ -23,6 +22,8 @@ namespace GachaController.Auth
 
         void Start()
         {
+                //PlayerPrefs.SetString(AccessTokenKey.accessTokenKey, accessToken.token);
+                //SceneManager.LoadScene("LoginScene");
             PlayerPrefs.DeleteAll();
         }
 
