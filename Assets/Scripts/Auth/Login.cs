@@ -32,7 +32,7 @@ public class Login : MonoBehaviour
             "")
         {
             Debug.Log("not logged in");
-            // StartCoroutine(Execute());
+            // DoLogin();
         }
         else
         {
@@ -43,7 +43,7 @@ public class Login : MonoBehaviour
         }
     }
 
-    public void Execute()
+    public void DoLogin()
     {
         StartCoroutine("ExecuteLogin");
     }
