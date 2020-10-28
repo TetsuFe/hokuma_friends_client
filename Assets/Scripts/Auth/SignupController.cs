@@ -24,7 +24,11 @@ namespace GachaController.Auth
         {
                 //PlayerPrefs.SetString(AccessTokenKey.accessTokenKey, accessToken.token);
                 //SceneManager.LoadScene("LoginScene");
-            PlayerPrefs.DeleteAll();
+            var accessToken = PlayerPrefs.GetString(AccessTokenKey.accessTokenKey);
+            if (accessToken != "")
+            {
+                SceneManager.LoadScene("LoginScene");
+            }
         }
 
         public void handleSubmitButtonTapped()
