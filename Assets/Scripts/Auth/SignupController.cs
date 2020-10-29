@@ -6,11 +6,11 @@ using UnityEngine.UI;
 
 namespace GachaController.Auth
 {
-
     class Token
     {
         public string token;
     }
+
     public class SignupController : MonoBehaviour
     {
         [SerializeField] private InputField emailField;
@@ -18,17 +18,26 @@ namespace GachaController.Auth
         [SerializeField] private InputField usernameField;
         [SerializeField] private InputField passwordField;
         [SerializeField] private Button submitButton;
+        [SerializeField] private Button moveToLoginPageButton;
 
 
         void Start()
         {
-                //PlayerPrefs.SetString(AccessTokenKey.accessTokenKey, accessToken.token);
-                //SceneManager.LoadScene("LoginScene");
+            InitUI();
+            //PlayerPrefs.SetString(AccessTokenKey.accessTokenKey, accessToken.token);
+            //SceneManager.LoadScene("LoginScene");
             var accessToken = PlayerPrefs.GetString(AccessTokenKey.accessTokenKey);
             if (accessToken != "")
             {
                 SceneManager.LoadScene("LoginScene");
             }
+        }
+
+        void InitUI()
+        {
+            moveToLoginPageButton.onClick.AddListener(
+                () => SceneManager.LoadScene("LoginScene")
+            );
         }
 
         public void handleSubmitButtonTapped()
