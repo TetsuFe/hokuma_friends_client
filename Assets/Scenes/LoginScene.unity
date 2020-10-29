@@ -1303,7 +1303,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2008362056}
         m_TargetAssemblyTypeName: Login, Assembly-CSharp
-        m_MethodName: Execute
+        m_MethodName: DoLogin
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
