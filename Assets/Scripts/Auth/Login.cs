@@ -33,7 +33,8 @@ public class Login : MonoBehaviour
             //PlayerPrefs.DeleteAll();
             // Debug.Log(LoadAccessToken());
             // LoadMainScene();
-            LoadMyCharactersScene();
+            // LoadMyCharactersScene();
+            LoadTitleScene();
         }
     }
 
@@ -52,14 +53,13 @@ public class Login : MonoBehaviour
         var isSuccess = (bool) coroutine.Current;
         if (isSuccess)
         {
-            SceneManager.LoadScene("MyCharactersScene");
         }
         else
         {
             Debug.Log("Login is failed");
         }
     }
-
+    
 
     void LoadMainScene()
     {
@@ -71,6 +71,11 @@ public class Login : MonoBehaviour
         SceneManager.LoadScene("MyCharactersScene");
     }
 
+    void LoadTitleScene()
+    {
+            SceneManager.LoadScene("TitleScene");
+    }
+    
     // Update is called once per frame
     void Update()
     {
