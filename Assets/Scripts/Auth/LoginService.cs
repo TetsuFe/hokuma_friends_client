@@ -59,6 +59,31 @@ namespace GachaController.Auth
             return true;
         }
 
+        public IEnumerator LogihWithCredential()
+        {
+            var accessToken = LoadAccessToken();
+            var request = UnityWebRequest.Get("http://localhost:8000/api/auth/me");
+            request.SetRequestHeader("Authorization", "Bearer " + accessToken);
+            request.SetRequestHeader("Content-Type", "application/json");
+            yield return request.SendWebRequest();
+            Debug.Log(request.downloadHandler.text);
+            if (request.responseCode == 200)
+            {
+                Debug.Log("true");
+                yield return true;
+            }
+            Debug.Log(request.responseCode);
+            if (request.responseCode == 200)
+            {
+                Debug.Log("true");
+                yield return true;
+            }
+            else
+            {
+                Debug.Log("false");
+                yield return false;
+            }
+        }
 
         public void SaveAccessToken(string accessToken)
         {
