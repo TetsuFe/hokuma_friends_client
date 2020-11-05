@@ -19,22 +19,22 @@ public class Login : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-        
+        StartCoroutine(CheckLoginSuccess());
+    }
+
+    IEnumerator CheckLoginSuccess()
+    {
     var loginService = new LoginService();
-        if (loginService.LoadAccessToken() ==
-            "")
+    var coroutine = loginService.LogihWithCredential();
+    yield return StartCoroutine(coroutine);
+    var isSuccess = (bool) coroutine.Current;
+        if (isSuccess)
         {
-            Debug.Log("not logged in");
-            // DoLogin();
+            LoadTitleScene();
         }
         else
         {
-            //PlayerPrefs.DeleteAll();
-            // Debug.Log(LoadAccessToken());
-            // LoadMainScene();
-            // LoadMyCharactersScene();
-            LoadTitleScene();
+            Debug.Log("not logged in");
         }
     }
 
