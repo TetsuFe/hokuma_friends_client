@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using GachaController.Auth;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
@@ -13,15 +14,28 @@ namespace GachaController
 
     public class GachaController : MonoBehaviour
     {
-        public Image receivedGachaCharacterImage;
+        [SerializeField]
+        private Image receivedGachaCharacterImage;
+        
+        // Start is called before the first frame update
+        void Start()
+        {
+            StartCoroutine("OnSend"); 
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+        }
 
         IEnumerator OnSend()
         {
             //URLをGETで用意
             var webRequest =
                 UnityWebRequest.Get(
-                    "https://i948gk4k0m.execute-api.ap-northeast-1.amazonaws.com/dev/api/gacha/platinum/");
+                    "http://localhost:8000/api/gacha/platinum/");
             //URLに接続して結果が戻ってくるまで待機
+            webRequest.SetRequestHeader("Authorization", "Bearer "+(new LoginService()).LoadAccessToken());
             yield return webRequest.SendWebRequest();
 
             //エラーが出ていないかチェック
@@ -40,11 +54,6 @@ namespace GachaController
             }
         }
 
-        public void OnClick()
-        {
-            // setImage(1);
-            StartCoroutine("OnSend");
-        }
 
         public void setImage(int characterId)
         {
@@ -63,14 +72,5 @@ namespace GachaController
             receivedGachaCharacterImage.sprite = sprite;
         }
 
-        // Start is called before the first frame update
-        void Start()
-        {
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-        }
     }
 }
