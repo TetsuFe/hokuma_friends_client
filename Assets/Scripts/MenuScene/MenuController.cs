@@ -9,11 +9,18 @@ public class MenuController : MonoBehaviour
 {
 
     [SerializeField]
-    private Button moveToMyCharactersButton;
+    private Button moveToMyCharactersSceneButton;
+    [SerializeField]
+    private Button moveToGachaListSceneButton;
     // Start is called before the first frame update
     void Start()
     {
-        
+        moveToMyCharactersSceneButton.onClick.AddListener(() => {
+            LoadMyCharactersScene();
+        });
+        moveToGachaListSceneButton.onClick.AddListener(() => {
+            LoadGachaListScene();
+        });
     }
 
     // Update is called once per frame
@@ -25,5 +32,10 @@ public class MenuController : MonoBehaviour
     public void LoadMyCharactersScene()
     {
         SceneManager.LoadScene("MyCharactersScene");
+    }
+    
+    public void LoadGachaListScene()
+    {
+        SceneManager.LoadScene("GachaListScene");
     }
 }
