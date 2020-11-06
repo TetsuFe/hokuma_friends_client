@@ -15,12 +15,12 @@ public class MenuController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        moveToMyCharactersSceneButton.onClick.AddListener(() => {
-            LoadMyCharactersScene();
-        });
-        moveToGachaListSceneButton.onClick.AddListener(() => {
-            LoadGachaListScene();
-        });
+        moveToMyCharactersSceneButton.onClick.AddListener(
+            LoadMyCharactersScene
+        );
+        moveToGachaListSceneButton.onClick.AddListener(
+            LoadGachaListScene
+        );
     }
 
     // Update is called once per frame
