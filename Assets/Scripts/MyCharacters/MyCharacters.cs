@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 
 [Serializable]
 class MyCharactersData
@@ -24,11 +25,18 @@ class CharacterData
 public class MyCharacters : MonoBehaviour
 {
     [SerializeField] Canvas canvas;
+    [SerializeField] private Button backToMenuButton;
 
     // Start is called before the first frame update
     void Start()
     {
+        backToMenuButton.onClick.AddListener(LoadMenuScene);
         StartCoroutine(FetchMyCharacters());
+    }
+
+    void LoadMenuScene()
+    {
+        SceneManager.LoadScene("MenuScene");
     }
 
     IEnumerator FetchMyCharacters()
