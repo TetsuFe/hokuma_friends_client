@@ -9,7 +9,8 @@ using UnityEngine.SceneManagement;
 [Serializable]
 class MyCharactersData
 {
-    public List<CharacterData> myCharacters;
+    // public List<CharacterData> myCharacters;
+    public List<int> myCharacters;
 }
 
 [Serializable]
@@ -52,7 +53,7 @@ public class MyCharacters : MonoBehaviour
         int i = 0;
         foreach (var e in myCharacters.myCharacters)
         {
-            Debug.Log(e.characterId);
+            Debug.Log(e);
             GameObject imgObject = new GameObject("testAAA");
 
             RectTransform trans = imgObject.AddComponent<RectTransform>();
@@ -66,7 +67,7 @@ public class MyCharacters : MonoBehaviour
                 imgObject.transform.position.y, 1f);
 
             imgObject.transform.SetParent(canvas.transform);
-            string path = "hokuma_" + e.characterId;
+            string path = "hokuma_" + e;
             image.sprite = Resources.Load<Sprite>(path);
             i++;
         }
