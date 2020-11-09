@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using GachaController.Auth;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace GachaController
@@ -16,11 +17,17 @@ namespace GachaController
     {
         [SerializeField]
         private Image receivedGachaCharacterImage;
+
+        [SerializeField] private Button cancelButton;
+        [SerializeField] private Button redrawButton;
         
         // Start is called before the first frame update
         void Start()
         {
             StartCoroutine("OnSend"); 
+            
+            cancelButton.onClick.AddListener(LoadGachaListScene);
+            redrawButton.onClick.AddListener(LoadGachaScene);
         }
 
         // Update is called once per frame
@@ -72,5 +79,14 @@ namespace GachaController
             receivedGachaCharacterImage.sprite = sprite;
         }
 
+        private void LoadGachaScene()
+        {
+            SceneManager.LoadScene("GachaScene");
+        }
+
+        private void LoadGachaListScene()
+        {
+            SceneManager.LoadScene("GachaListScene");
+        }
     }
 }
