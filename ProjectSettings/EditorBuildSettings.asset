@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GachaScene.unity
     guid: 54c102f7e51854e6dbfcf186761817a8
+  - enabled: 1
+    path: Assets/Scenes/QuestBattleScene.unity
+    guid: 938de771122e0497b9024975db474740
   m_configObjects: {}
