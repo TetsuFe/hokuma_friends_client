@@ -32,6 +32,9 @@ namespace Quest
     public class QuestBattleController : MonoBehaviour
     {
         [SerializeField] private Text resultText;
+        [SerializeField] private Text myCharacterHpText;
+        [SerializeField] private Text enemyHpText;
+        
         private Character enemy = new Character(speed: 1, hp: 2);
         private Character myCharacter = new Character(speed: 2, hp: 2);
 
@@ -56,11 +59,13 @@ namespace Quest
                 {
                     Debug.Log(dt);
                     enemy.hp -= 1;
+                    enemyHpText.text = "HP: "+enemy.hp.ToString();
                 }
                 if (((1 / enemy.GetSpeed()) * 10) % Convert.ToInt32(dt* 10) == 0)
                 {
                     Debug.Log(dt);
                     myCharacter.hp -= 1;
+                    myCharacterHpText.text = "HP: "+myCharacter.hp.ToString();
                 }
 
                 dt = 0.0f;
