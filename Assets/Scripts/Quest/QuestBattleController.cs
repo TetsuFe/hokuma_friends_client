@@ -1,18 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class QuestBattleController : MonoBehaviour
+namespace Quest
 {
-    // Start is called before the first frame update
-    void Start()
+    public class QuestBattleController : MonoBehaviour
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        [SerializeField] private Text resultText;
+        // Start is called before the first frame update
+        void Start()
+        {
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            resultText.text = "WIN!";
+        }
     }
 }
