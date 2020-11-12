@@ -34,7 +34,7 @@ namespace Quest
         [SerializeField] private Text resultText;
         [SerializeField] private Text myCharacterHpText;
         [SerializeField] private Text enemyHpText;
-        
+
         private Character enemy = new Character(speed: 1, hp: 2);
         private Character myCharacter = new Character(speed: 2, hp: 2);
         public int questId;
@@ -42,7 +42,7 @@ namespace Quest
         // Start is called before the first frame update
         void Start()
         {
-            Debug.Log("questId: "+questId);
+            Debug.Log("questId: " + questId);
         }
 
         // Update is called once per frame
@@ -53,36 +53,42 @@ namespace Quest
 
         void Update()
         {
-            if(!isBattleEnded)
-            dt += Time.deltaTime;
-            if (dt > 0.1f)
+            if (!isBattleEnded)
             {
-                if (((1 / myCharacter.GetSpeed()) * 10) % Convert.ToInt32(dt* 10) == 0)
+                dt += Time.deltaTime;
+                if (dt > 0.1f)
                 {
-                    Debug.Log(dt);
-                    enemy.hp -= 1;
-                    enemyHpText.text = "HP: "+enemy.hp.ToString();
-                }
-                if (((1 / enemy.GetSpeed()) * 10) % Convert.ToInt32(dt* 10) == 0)
-                {
-                    Debug.Log(dt);
-                    myCharacter.hp -= 1;
-                    myCharacterHpText.text = "HP: "+myCharacter.hp.ToString();
-                }
+                    if (((1 / myCharacter.GetSpeed()) * 10) % Convert.ToInt32(dt * 10) == 0)
+                    {
+                        Debug.Log(dt);
+                        enemy.hp -= 1;
+                        enemyHpText.text = "HP: " + enemy.hp.ToString();
+                    }
 
-                dt = 0.0f;
+                    // hp現象の結果に応じて試合結果を表示
+                    if (enemy.GetHp() == 0)
+                    {
+                        resultText.text = "WIN!";
+                        isBattleEnded = true;
+                    }
 
-                // hp現象の結果に応じて試合結果を表示
-                if (enemy.GetHp() == 0)
-                {
-                    resultText.text = "WIN!";
-                    isBattleEnded = true;
-                }
+                    if (!isBattleEnded)
+                    {
+                        if (((1 / enemy.GetSpeed()) * 10) % Convert.ToInt32(dt * 10) == 0)
+                        {
+                            Debug.Log(dt);
+                            myCharacter.hp -= 1;
+                            myCharacterHpText.text = "HP: " + myCharacter.hp.ToString();
+                        }
 
-                if (myCharacter.GetHp() == 0)
-                {
-                    resultText.text = "LOSE...";
-                    isBattleEnded = true;
+                        if (myCharacter.GetHp() == 0)
+                        {
+                            resultText.text = "LOSE...";
+                            isBattleEnded = true;
+                        }
+                    }
+
+                    dt = 0.0f;
                 }
             }
         }
