@@ -37,6 +37,7 @@ namespace Quest
 
         private Character enemy = new Character(speed: 1, hp: 2);
         private Character myCharacter = new Character(speed: 2, hp: 2);
+        public int questId;
 
         // Start is called before the first frame update
         void Start()
