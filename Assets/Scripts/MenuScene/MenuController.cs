@@ -44,6 +44,6 @@ public class MenuController : MonoBehaviour
 
     private void LoadQuestScene()
     {
-        SceneManager.LoadScene("QuestBattleScene");
+        SceneManager.LoadScene("QuestListScene");
     }
 }
