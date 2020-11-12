@@ -7,15 +7,29 @@
         <e p="Scripts" t="Include">
           <e p="Auth" t="Include">
             <e p="Login.cs" t="Include" />
+            <e p="LoginService.cs" t="Include" />
             <e p="SignupController.cs" t="Include" />
           </e>
-          <e p="GachaController.cs" t="Include" />
+          <e p="Gacha" t="Include">
+            <e p="GachaController.cs" t="Include" />
+            <e p="GachaListController.cs" t="Include" />
+          </e>
+          <e p="MenuScene" t="Include">
+            <e p="MenuController.cs" t="Include" />
+          </e>
           <e p="MyCharacters" t="Include">
             <e p="MyCharacters.cs" t="Include" />
           </e>
           <e p="NewBehaviourScript.cs" t="Include" />
           <e p="NewBehaviourScript1.cs" t="Include" />
           <e p="NewBehaviourScript2.cs" t="Include" />
+          <e p="Quest" t="Include">
+            <e p="QuestBattleController.cs" t="Include" />
+            <e p="QuestListController.cs" t="Include" />
+          </e>
+          <e p="TitlePage" t="Include">
+            <e p="TitlePageController.cs" t="Include" />
+          </e>
         </e>
       </e>
       <e p="HokumaFriends.sln" t="IncludeFlat" />
