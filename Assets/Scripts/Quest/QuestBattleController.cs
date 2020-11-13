@@ -4,6 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using UnityEngine.SceneManagement;
 
 class Character
 {
@@ -34,6 +35,7 @@ namespace Quest
         [SerializeField] private Text resultText;
         [SerializeField] private Text myCharacterHpText;
         [SerializeField] private Text enemyHpText;
+        [SerializeField] private Button nextButton;
 
         private Character enemy = new Character(speed: 1, hp: 2);
         private Character myCharacter = new Character(speed: 2, hp: 2);
@@ -70,6 +72,7 @@ namespace Quest
                     {
                         resultText.text = "WIN!";
                         isBattleEnded = true;
+                        EnableNextButton();
                     }
 
                     if (!isBattleEnded)
@@ -85,12 +88,19 @@ namespace Quest
                         {
                             resultText.text = "LOSE...";
                             isBattleEnded = true;
+                            EnableNextButton();
                         }
                     }
 
                     dt = 0.0f;
                 }
             }
+        }
+
+        void EnableNextButton()
+        {
+            nextButton.interactable = true;
+            nextButton.onClick.AddListener(() => SceneManager.LoadScene("QuestListScene"));
         }
     }
 }
