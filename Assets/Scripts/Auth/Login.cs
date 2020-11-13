@@ -14,12 +14,16 @@ public class Login : MonoBehaviour
 
     [SerializeField] private InputField passwordField;
     [SerializeField] private Button submitButton;
+    [SerializeField] private Button moveToSignupButton;
+    
 
 
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(CheckLoginSuccess());
+        submitButton.onClick.AddListener(DoLogin);
+        moveToSignupButton.onClick.AddListener(LoadSignupScehe);
     }
 
     IEnumerator CheckLoginSuccess()
@@ -79,5 +83,10 @@ public class Login : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    }
+
+    void LoadSignupScehe()
+    {
+        SceneManager.LoadScene("Signup");
     }
 }
