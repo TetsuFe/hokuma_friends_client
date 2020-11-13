@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/TitleScene.unity
+    guid: d92d100b9f9394610b8cabc68f0a42ac
+  - enabled: 1
     path: Assets/Scenes/LoginScene.unity
     guid: e21294e9b840949b4a58ed8b9a6e1cca
   - enabled: 1
@@ -18,9 +21,6 @@ EditorBuildSettings:
     path: Assets/Scenes/MyCharactersScene.unity
     guid: f4c01fb0f8f3b4f0db4bc6e28cb0b202
   - enabled: 1
-    path: Assets/Scenes/TitleScene.unity
-    guid: d92d100b9f9394610b8cabc68f0a42ac
-  - enabled: 1
     path: Assets/Scenes/MenuScene.unity
     guid: f2907ff8167e845b2a4de178de0d6d2b
   - enabled: 1
@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/QuestBattleScene.unity
     guid: 938de771122e0497b9024975db474740
+  - enabled: 1
+    path: Assets/Scenes/QuestListScene.unity
+    guid: d7ad4e59c74884bd49d8dd7e878e657d
   m_configObjects: {}
