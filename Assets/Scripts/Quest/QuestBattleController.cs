@@ -4,6 +4,8 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using UnityEngine.SceneManagement;
+using Cysharp.Threading.Tasks;
 
 class Character
 {
@@ -34,6 +36,7 @@ namespace Quest
         [SerializeField] private Text resultText;
         [SerializeField] private Text myCharacterHpText;
         [SerializeField] private Text enemyHpText;
+        [SerializeField] private Button nextButton;
 
         private Character enemy = new Character(speed: 1, hp: 2);
         private Character myCharacter = new Character(speed: 2, hp: 2);
@@ -70,6 +73,7 @@ namespace Quest
                     {
                         resultText.text = "WIN!";
                         isBattleEnded = true;
+                        SendBattleResult(1, true);
                     }
 
                     if (!isBattleEnded)
@@ -85,12 +89,29 @@ namespace Quest
                         {
                             resultText.text = "LOSE...";
                             isBattleEnded = true;
+                            SendBattleResult(1, false);
                         }
                     }
 
                     dt = 0.0f;
                 }
             }
+        }
+
+        async void SendBattleResult(int questId, bool isCleared)
+        {
+            var api = new QuestApi();
+            var returnedValue = await api.PostQuestResult(questId, isCleared);
+            if (returnedValue)
+            {
+                EnableNextButton();
+            }
+        }
+
+        void EnableNextButton()
+        {
+            nextButton.interactable = true;
+            nextButton.onClick.AddListener(() => SceneManager.LoadScene("QuestListScene"));
         }
     }
 }
