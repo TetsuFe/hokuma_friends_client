@@ -57,6 +57,7 @@ public class Login : MonoBehaviour
         var isSuccess = (bool) coroutine.Current;
         if (isSuccess)
         {
+            SceneManager.LoadScene("MenuScene");
         }
         else
         {
