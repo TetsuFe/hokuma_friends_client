@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using UnityEngine.SceneManagement;
+using Cysharp.Threading.Tasks;
 
 class Character
 {
@@ -72,7 +73,7 @@ namespace Quest
                     {
                         resultText.text = "WIN!";
                         isBattleEnded = true;
-                        EnableNextButton();
+                        SendBattleResult(1, true);
                     }
 
                     if (!isBattleEnded)
@@ -88,12 +89,22 @@ namespace Quest
                         {
                             resultText.text = "LOSE...";
                             isBattleEnded = true;
-                            EnableNextButton();
+                            SendBattleResult(1, false);
                         }
                     }
 
                     dt = 0.0f;
                 }
+            }
+        }
+
+        async void SendBattleResult(int questId, bool isCleared)
+        {
+            var api = new QuestApi();
+            var returnedValue = await api.PostQuestResult(questId, isCleared);
+            if (returnedValue)
+            {
+                EnableNextButton();
             }
         }
 
