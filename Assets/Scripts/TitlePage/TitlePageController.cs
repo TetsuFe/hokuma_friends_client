@@ -31,5 +31,9 @@ public class TitlePageController : MonoBehaviour
             {
                 SceneManager.LoadScene("MenuScene");
             }
+            else
+            {
+                SceneManager.LoadScene("LoginScene");
+            }
     }
 }
