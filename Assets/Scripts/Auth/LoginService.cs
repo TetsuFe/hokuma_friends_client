@@ -43,7 +43,7 @@ namespace GachaController.Auth
                 Debug.Log(loginData.access_token);
                 var accessToken = LoadAccessToken();
                 Debug.Log(accessToken);
-                if (request.result == UnityWebRequest.Result.Success)
+                if (request.responseCode == 200)
                 {
                     yield return true;
                 }
