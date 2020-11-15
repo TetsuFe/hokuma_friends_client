@@ -38,8 +38,11 @@ namespace Quest
         [SerializeField] private Text enemyHpText;
         [SerializeField] private Button nextButton;
 
-        private Character enemy = new Character(speed: 1, hp: 2);
-        private Character myCharacter = new Character(speed: 2, hp: 2);
+        private Character[] enemies = new Character[] {new Character(speed: 1, hp: 2), new Character(speed: 1, hp: 2),};
+
+        private Character[] myCharacters = new Character[]
+            {new Character(speed: 2, hp: 2), new Character(speed: 2, hp: 2)};
+
         public int questId;
 
         // Start is called before the first frame update
@@ -61,21 +64,37 @@ namespace Quest
                 dt += Time.deltaTime;
                 if (dt > 0.1f)
                 {
-                    if (((1 / myCharacter.GetSpeed()) * 10) % Convert.ToInt32(dt * 10) == 0)
+                    // 攻撃をしかけるキャラを決める
+                    int characterIndex = CanMyCharacterAttacks();
+                    if(characterIndex != -1)
                     {
+                        // 攻撃対象を決める
+                        int enemyIndex = decideAttackObject();
+                        // 攻撃計算をする
                         Debug.Log(dt);
-                        enemy.hp -= 1;
-                        enemyHpText.text = "HP: " + enemy.hp.ToString();
+                        enemies[enemyIndex].hp -= 1;
+                        enemyHpText.text = "HP: " + enemies[enemyIndex].hp.ToString();
                     }
 
                     // hp現象の結果に応じて試合結果を表示
-                    if (enemy.GetHp() == 0)
+                    // 勝利条件
+                    bool winFlag = true;
+                    foreach (var enemy in enemies)
+                    {
+                        if (enemy.GetHp() > 0)
+                        {
+                            winFlag = false;
+                        }
+                    }
+
+                    if (winFlag)
                     {
                         resultText.text = "WIN!";
                         isBattleEnded = true;
                         SendBattleResult(1, true);
                     }
 
+                    /*
                     if (!isBattleEnded)
                     {
                         if (((1 / enemy.GetSpeed()) * 10) % Convert.ToInt32(dt * 10) == 0)
@@ -85,6 +104,7 @@ namespace Quest
                             myCharacterHpText.text = "HP: " + myCharacter.hp.ToString();
                         }
 
+                        // 勝利条件
                         if (myCharacter.GetHp() == 0)
                         {
                             resultText.text = "LOSE...";
@@ -92,26 +112,55 @@ namespace Quest
                             SendBattleResult(1, false);
                         }
                     }
+                    */
 
                     dt = 0.0f;
                 }
             }
         }
 
-        async void SendBattleResult(int questId, bool isCleared)
+        int CanMyCharacterAttacks()
         {
-            var api = new QuestApi();
-            var returnedValue = await api.PostQuestResult(questId, isCleared);
-            if (returnedValue)
+            var characterIndex = 0;
+            foreach (var myCharacter in myCharacters)
             {
-                EnableNextButton();
+                if (((1 / myCharacter.GetSpeed()) * 10) % Convert.ToInt32(dt * 10) == 0)
+                {
+                    return characterIndex;
+                }
+                characterIndex++;
             }
+            return -1;
         }
 
-        void EnableNextButton()
+        int decideAttackObject()
         {
-            nextButton.interactable = true;
-            nextButton.onClick.AddListener(() => SceneManager.LoadScene("QuestListScene"));
+            int i = 0;
+            foreach (var enemy in enemies)
+            {
+                if (enemy.hp > 0)
+                {
+                    return i;
+                }
+                i++;
+            }
+            return -1;
+        }
+
+        async void SendBattleResult(int questId, bool isCleared)
+            {
+                var api = new QuestApi();
+                var returnedValue = await api.PostQuestResult(questId, isCleared);
+                if (returnedValue)
+                {
+                    EnableNextButton();
+                }
+            }
+
+            void EnableNextButton()
+            {
+                nextButton.interactable = true;
+                nextButton.onClick.AddListener(() => SceneManager.LoadScene("QuestListScene"));
+            }
         }
     }
-}
