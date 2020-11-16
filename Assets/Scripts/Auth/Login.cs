@@ -65,12 +65,6 @@ public class Login : MonoBehaviour
         }
     }
     
-
-    void LoadMainScene()
-    {
-        SceneManager.LoadScene("SampleScene");
-    }
-
     void LoadMyCharactersScene()
     {
         SceneManager.LoadScene("MyCharactersScene");
