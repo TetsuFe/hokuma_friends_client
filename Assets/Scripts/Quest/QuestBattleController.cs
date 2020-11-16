@@ -38,10 +38,10 @@ namespace Quest
         [SerializeField] private Text enemyHpText;
         [SerializeField] private Button nextButton;
 
-        private Character[] enemies = new Character[] {new Character(speed: 1, hp: 2), new Character(speed: 1, hp: 2),};
+        private Character[] enemies = new Character[] {new Character(speed: 10, hp: 2), new Character(speed: 10, hp: 2),};
 
         private Character[] myCharacters = new Character[]
-            {new Character(speed: 2, hp: 2), new Character(speed: 2, hp: 2)};
+            {new Character(speed: 1, hp: 2), new Character(speed: 1, hp: 2)};
 
         public int questId;
 
@@ -71,6 +71,7 @@ namespace Quest
                         // 攻撃対象を決める
                         int enemyIndex = DecideAttackObject(enemies);
                         // 攻撃計算をする
+                        Debug.Log("Playerの攻撃！");
                         Debug.Log(dt);
                         enemies[enemyIndex].hp -= 1;
                         enemyHpText.text = "HP: " + enemies[enemyIndex].hp.ToString();
@@ -96,22 +97,35 @@ namespace Quest
 
                     if (!isBattleEnded)
                     {
-                        if (((1 / enemy.GetSpeed()) * 10) % Convert.ToInt32(dt * 10) == 0)
+                        // 攻撃をしかけるキャラを決める
+                        int enemyCharacterIndex = CanCharacterAttacks(enemies);
+                        if (enemyCharacterIndex != -1)
                         {
+                            // 攻撃対象を決める
+                            int allyIndex = DecideAttackObject(myCharacters);
+                            // 攻撃計算をする
+                            Debug.Log("NPCの攻撃！");
                             Debug.Log(dt);
-                            myCharacter.hp -= 1;
-                            myCharacterHpText.text = "HP: " + myCharacter.hp.ToString();
+                            myCharacters[allyIndex].hp -= 1;
+                            myCharacterHpText.text = "HP: " + myCharacters[allyIndex].hp;
                         }
 
-                        // 勝利条件
-                        if (myCharacter.GetHp() == 0)
+                        bool loseFlag = true;
+                        foreach (var ally in myCharacters)
                         {
-                            resultText.text = "LOSE...";
+                            if (ally.GetHp() > 0)
+                            {
+                                loseFlag = false;
+                            }
+                        }
+
+                        if (loseFlag)
+                        {
+                            resultText.text = "LOSE..";
                             isBattleEnded = true;
                             SendBattleResult(1, false);
                         }
                     }
-
                     dt = 0.0f;
                 }
             }
