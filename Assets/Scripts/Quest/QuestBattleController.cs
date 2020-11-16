@@ -69,7 +69,7 @@ namespace Quest
                     if(characterIndex != -1)
                     {
                         // 攻撃対象を決める
-                        int enemyIndex = decideAttackObject();
+                        int enemyIndex = DecideAttackObject(enemies);
                         // 攻撃計算をする
                         Debug.Log(dt);
                         enemies[enemyIndex].hp -= 1;
@@ -130,12 +130,12 @@ namespace Quest
             return -1;
         }
 
-        int decideAttackObject()
+        int DecideAttackObject(Character[] characters)
         {
             int i = 0;
-            foreach (var enemy in enemies)
+            foreach (var character in characters)
             {
-                if (enemy.hp > 0)
+                if (character.hp > 0)
                 {
                     return i;
                 }
