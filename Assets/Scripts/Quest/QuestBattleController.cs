@@ -65,7 +65,7 @@ namespace Quest
                 if (dt > 0.1f)
                 {
                     // 攻撃をしかけるキャラを決める
-                    int characterIndex = CanMyCharacterAttacks();
+                    int characterIndex = CanCharacterAttacks(myCharacters);
                     if(characterIndex != -1)
                     {
                         // 攻撃対象を決める
@@ -94,7 +94,6 @@ namespace Quest
                         SendBattleResult(1, true);
                     }
 
-                    /*
                     if (!isBattleEnded)
                     {
                         if (((1 / enemy.GetSpeed()) * 10) % Convert.ToInt32(dt * 10) == 0)
@@ -112,19 +111,17 @@ namespace Quest
                             SendBattleResult(1, false);
                         }
                     }
-                    */
 
                     dt = 0.0f;
                 }
             }
         }
 
-        int CanMyCharacterAttacks()
-        {
+        int CanCharacterAttacks(Character[] characters){
             var characterIndex = 0;
-            foreach (var myCharacter in myCharacters)
+            foreach (var character in characters)
             {
-                if (((1 / myCharacter.GetSpeed()) * 10) % Convert.ToInt32(dt * 10) == 0)
+                if (((1 / character.GetSpeed()) * 10) % Convert.ToInt32(dt * 10) == 0)
                 {
                     return characterIndex;
                 }
