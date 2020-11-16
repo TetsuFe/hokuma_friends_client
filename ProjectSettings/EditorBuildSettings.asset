@@ -15,9 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Signup.unity
     guid: 6c80596d513254cecb7dd5d58e4b3bbf
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
     path: Assets/Scenes/MyCharactersScene.unity
     guid: f4c01fb0f8f3b4f0db4bc6e28cb0b202
   - enabled: 1
