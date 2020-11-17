@@ -55,9 +55,12 @@ public class Character
         // Start is called before the first frame update
         void Start()
         {
-            Debug.Log("questId: " + questId);
             allyHpTexts = new[] {myCharacterHpText, myCharacter2HpText};
             enemyHpTexts = new[] {enemyHpText, enemy2HpText};
+            allyHpTexts[0].text = "HP: " + myCharacters[0].hp;
+            allyHpTexts[1].text = "HP: " + myCharacters[1].hp;
+            enemyHpTexts[0].text = "HP: " + enemies[0].hp;
+            enemyHpTexts[1].text = "HP: " + enemies[1].hp;
         }
 
         // Update is called once per frame
