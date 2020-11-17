@@ -36,7 +36,12 @@ public class Character
         [SerializeField] private Text resultText;
         [SerializeField] private Text myCharacterHpText;
         [SerializeField] private Text enemyHpText;
+        [SerializeField] private Text myCharacter2HpText;
+        [SerializeField] private Text enemy2HpText;
         [SerializeField] private Button nextButton;
+        
+        Text[] allyHpTexts;
+        Text[] enemyHpTexts;
 
         private Character[] enemies = new Character[] {new Character(speed: 1, hp: 20), new Character(speed: 1, hp: 20),};
 
@@ -51,6 +56,8 @@ public class Character
         void Start()
         {
             Debug.Log("questId: " + questId);
+            allyHpTexts = new[] {myCharacterHpText, myCharacter2HpText};
+            enemyHpTexts = new[] {enemyHpText, enemy2HpText};
         }
 
         // Update is called once per frame
@@ -82,7 +89,7 @@ public class Character
                         Debug.Log("Playerの攻撃！");
                         Debug.Log(dt);
                         enemies[enemyIndex].hp -= 1;
-                        enemyHpText.text = "HP: " + enemies[enemyIndex].hp.ToString();
+                        enemyHpTexts[enemyIndex].text = "HP: " + enemies[enemyIndex].hp.ToString();
                     }
 
                     // hp現象の結果に応じて試合結果を表示
@@ -115,7 +122,7 @@ public class Character
                             Debug.Log("NPCの攻撃！");
                             Debug.Log(dt);
                             myCharacters[allyIndex].hp -= 1;
-                            myCharacterHpText.text = "HP: " + myCharacters[allyIndex].hp;
+                            allyHpTexts[allyIndex].text = "HP: " + myCharacters[allyIndex].hp;
                         }
 
                         bool loseFlag = true;
