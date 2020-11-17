@@ -14,6 +14,7 @@ public class MenuController : MonoBehaviour
     private Button moveToGachaListSceneButton;
 
     [SerializeField] private Button moveToQuestSceneButton;
+    [SerializeField] private Button moveToStoryListSceneButton;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +25,7 @@ public class MenuController : MonoBehaviour
             LoadGachaListScene
         );
         moveToQuestSceneButton.onClick.AddListener(LoadQuestScene);
+        moveToStoryListSceneButton.onClick.AddListener(LoadStoryListScene);
     }
 
     // Update is called once per frame
@@ -45,5 +47,10 @@ public class MenuController : MonoBehaviour
     private void LoadQuestScene()
     {
         SceneManager.LoadScene("QuestListScene");
+    }
+
+    private void LoadStoryListScene()
+    {
+        SceneManager.LoadScene("StoryListScene");
     }
 }

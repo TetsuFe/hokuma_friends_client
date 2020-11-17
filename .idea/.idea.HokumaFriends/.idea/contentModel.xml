@@ -29,6 +29,10 @@
             <e p="QuestBattleController.cs" t="Include" />
             <e p="QuestListController.cs" t="Include" />
           </e>
+          <e p="Story" t="Include">
+            <e p="StoryController.cs" t="Include" />
+            <e p="StoryListController.cs" t="Include" />
+          </e>
           <e p="TitlePage" t="Include">
             <e p="TitlePageController.cs" t="Include" />
           </e>
