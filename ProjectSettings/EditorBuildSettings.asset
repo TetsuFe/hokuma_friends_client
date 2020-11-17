@@ -32,4 +32,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/QuestListScene.unity
     guid: d7ad4e59c74884bd49d8dd7e878e657d
+  - enabled: 1
+    path: Assets/Scenes/StoryScene.unity
+    guid: 2ce4f5d1b177a488495d8d57bf3f9b01
+  - enabled: 1
+    path: Assets/Scenes/StoryListScene.unity
+    guid: 017e18d3ab53c4eed84024d8d2a1e13d
   m_configObjects: {}
