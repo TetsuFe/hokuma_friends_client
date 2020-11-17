@@ -38,10 +38,10 @@ namespace Quest
         [SerializeField] private Text enemyHpText;
         [SerializeField] private Button nextButton;
 
-        private Character[] enemies = new Character[] {new Character(speed: 10, hp: 2), new Character(speed: 10, hp: 2),};
+        private Character[] enemies = new Character[] {new Character(speed: 1, hp: 20), new Character(speed: 1, hp: 20),};
 
         private Character[] myCharacters = new Character[]
-            {new Character(speed: 1, hp: 2), new Character(speed: 1, hp: 2)};
+            {new Character(speed: 5, hp: 20), new Character(speed: 5, hp: 20)};
 
         public int questId;
 
@@ -57,6 +57,7 @@ namespace Quest
         double dt = 0.0f;
         private bool isBattleEnded = false;
 
+        private double adt;
         void Update()
         {
             if (!isBattleEnded)
@@ -64,6 +65,11 @@ namespace Quest
                 dt += Time.deltaTime;
                 if (dt > 0.1f)
                 {
+                    adt += dt;
+                    if (adt > 1)
+                    {
+                        adt = 0;
+                    }
                     // 攻撃をしかけるキャラを決める
                     int characterIndex = CanCharacterAttacks(myCharacters);
                     if(characterIndex != -1)
@@ -135,7 +141,7 @@ namespace Quest
             var characterIndex = 0;
             foreach (var character in characters)
             {
-                if (((1 / character.GetSpeed()) * 10) % Convert.ToInt32(dt * 10) == 0)
+                if (Convert.ToInt32(adt*10) % 10/character.GetSpeed() == 0)
                 {
                     return characterIndex;
                 }
