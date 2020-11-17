@@ -24,6 +24,7 @@
           <e p="NewBehaviourScript1.cs" t="Include" />
           <e p="NewBehaviourScript2.cs" t="Include" />
           <e p="Quest" t="Include">
+            <e p="BattleRule.cs" t="Include" />
             <e p="QuestApi.cs" t="Include" />
             <e p="QuestBattleController.cs" t="Include" />
             <e p="QuestListController.cs" t="Include" />
