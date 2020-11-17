@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
-using System;
 using UnityEngine.SceneManagement;
 using Cysharp.Threading.Tasks;
 
-class Character
+
+namespace Quest
+{
+    
+public class Character
 {
     public Character(int speed, int hp)
     {
@@ -28,9 +31,6 @@ class Character
         return hp;
     }
 }
-
-namespace Quest
-{
     public class QuestBattleController : MonoBehaviour
     {
         [SerializeField] private Text resultText;
@@ -44,6 +44,8 @@ namespace Quest
             {new Character(speed: 5, hp: 20), new Character(speed: 5, hp: 20)};
 
         public int questId;
+
+        private BattleRule battleRule = new BattleRule();
 
         // Start is called before the first frame update
         void Start()
@@ -71,11 +73,11 @@ namespace Quest
                         adt = 0;
                     }
                     // 攻撃をしかけるキャラを決める
-                    int characterIndex = CanCharacterAttacks(myCharacters);
+                    int characterIndex = battleRule.CanCharacterAttacks(myCharacters, adt);
                     if(characterIndex != -1)
                     {
                         // 攻撃対象を決める
-                        int enemyIndex = DecideAttackObject(enemies);
+                        int enemyIndex = battleRule.DecideAttackObject(enemies);
                         // 攻撃計算をする
                         Debug.Log("Playerの攻撃！");
                         Debug.Log(dt);
@@ -104,11 +106,11 @@ namespace Quest
                     if (!isBattleEnded)
                     {
                         // 攻撃をしかけるキャラを決める
-                        int enemyCharacterIndex = CanCharacterAttacks(enemies);
+                        int enemyCharacterIndex =  battleRule.CanCharacterAttacks(enemies, adt);
                         if (enemyCharacterIndex != -1)
                         {
                             // 攻撃対象を決める
-                            int allyIndex = DecideAttackObject(myCharacters);
+                            int allyIndex =  battleRule.DecideAttackObject(myCharacters);
                             // 攻撃計算をする
                             Debug.Log("NPCの攻撃！");
                             Debug.Log(dt);
@@ -137,32 +139,6 @@ namespace Quest
             }
         }
 
-        int CanCharacterAttacks(Character[] characters){
-            var characterIndex = 0;
-            foreach (var character in characters)
-            {
-                if (Convert.ToInt32(adt*10) % 10/character.GetSpeed() == 0)
-                {
-                    return characterIndex;
-                }
-                characterIndex++;
-            }
-            return -1;
-        }
-
-        int DecideAttackObject(Character[] characters)
-        {
-            int i = 0;
-            foreach (var character in characters)
-            {
-                if (character.hp > 0)
-                {
-                    return i;
-                }
-                i++;
-            }
-            return -1;
-        }
 
         async void SendBattleResult(int questId, bool isCleared)
             {
