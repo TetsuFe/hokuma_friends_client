@@ -40,7 +40,7 @@ namespace Story
                 {
                     if (messagesIndex < messages.Length - 1)
                     {
-                        SetupNextMessage();
+                        // SetupNextMessage();
                     }
                 }
 
@@ -55,7 +55,7 @@ namespace Story
             oneMessage = messages[0];
         }
 
-        void SetupNextMessage()
+        public void SetupNextMessage()
         {
             messagesIndex++;
             oneMessage = messages[messagesIndex];
