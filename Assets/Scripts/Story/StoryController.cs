@@ -11,12 +11,9 @@ namespace Story
         [SerializeField] private Text messageArea;
         [SerializeField] private Text characterName;
 
-        private string oneMessage;
-        private string[] messages;
 
-        private int messageCharIndex = 0;
-        int messagesIndex = 0;
         private double dt = 0.0f;
+        private MessageProceedManager _messageProceedManager = MessageProceedManager.Instance;
 
         // Start is called before the first frame update
         void Start()
@@ -31,17 +28,10 @@ namespace Story
             dt += Time.deltaTime;
             if (dt > 0.1f)
             {
-                if (messageCharIndex < oneMessage.Length)
+                var message = _messageProceedManager.GetCurrentPartialMessage();
+                if (message != null)
                 {
-                    messageArea.text += oneMessage[messageCharIndex];
-                    messageCharIndex++;
-                }
-                else if (messageCharIndex == oneMessage.Length)
-                {
-                    if (messagesIndex < messages.Length - 1)
-                    {
-                        // SetupNextMessage();
-                    }
+                    messageArea.text = message;
                 }
 
                 dt = 0.0f;
@@ -51,15 +41,11 @@ namespace Story
         void SetupMessages()
         {
             messageArea.text = "";
-            messages = new[] {"こんにちはクマ！", "さようならクマ！"};
-            oneMessage = messages[0];
+            _messageProceedManager.SetupMessages();
         }
 
         public void SetupNextMessage()
         {
-            messagesIndex++;
-            oneMessage = messages[messagesIndex];
-            messageCharIndex = 0;
             messageArea.text = "";
         }
     }

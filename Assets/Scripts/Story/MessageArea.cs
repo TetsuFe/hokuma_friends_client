@@ -8,6 +8,7 @@ namespace Story
          public void OnClickHander()
          {
              Debug.Log("clicked");
+             MessageProceedManager.Instance.SetupNextMessage();
          }
     }
 }

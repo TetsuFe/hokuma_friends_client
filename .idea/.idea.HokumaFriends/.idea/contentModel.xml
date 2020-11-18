@@ -30,6 +30,9 @@
             <e p="QuestListController.cs" t="Include" />
           </e>
           <e p="Story" t="Include">
+            <e p="MessageArea.cs" t="Include" />
+            <e p="MessageAreaClickHandler.cs" t="Include" />
+            <e p="MessageProceedManager.cs" t="Include" />
             <e p="StoryController.cs" t="Include" />
             <e p="StoryListController.cs" t="Include" />
           </e>
