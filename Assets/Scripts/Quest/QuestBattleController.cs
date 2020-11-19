@@ -167,7 +167,7 @@ namespace Quest
             }
             else
             {
-                showDialog()
+                ShowDialog();
             }
         }
 
