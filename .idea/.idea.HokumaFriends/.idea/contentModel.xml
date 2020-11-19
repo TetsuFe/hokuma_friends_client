@@ -10,6 +10,9 @@
             <e p="LoginService.cs" t="Include" />
             <e p="SignupController.cs" t="Include" />
           </e>
+          <e p="Dialog" t="Include">
+            <e p="OkCancelDialog.cs" t="Include" />
+          </e>
           <e p="Gacha" t="Include">
             <e p="GachaController.cs" t="Include" />
             <e p="GachaListController.cs" t="Include" />
