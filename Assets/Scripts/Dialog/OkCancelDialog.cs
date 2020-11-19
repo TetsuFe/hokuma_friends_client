@@ -9,7 +9,7 @@ namespace Dialog
     {
         public enum DialogResult
         {
-            OK,
+            Ok,
             Cancel,
         }
 
@@ -19,7 +19,7 @@ namespace Dialog
         // OKボタンが押されたとき
         public void OnOk()
         {
-            this.FixDialog?.Invoke(DialogResult.OK);
+            this.FixDialog?.Invoke(DialogResult.Ok);
             Destroy(this.gameObject);
         }
 
