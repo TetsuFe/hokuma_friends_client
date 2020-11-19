@@ -35,8 +35,15 @@ namespace Quest
             var accessToken = (new LoginService()).LoadAccessToken();
             request.SetRequestHeader("Authorization", "Bearer " + accessToken);
             request.SetRequestHeader("Content-Type", "application/json");
-            
-            await request.SendWebRequest();
+
+            try
+            {
+                await request.SendWebRequest();
+            }
+            catch (UnityWebRequestException e)
+            {
+                return false;
+            }
             
             return request.responseCode == 200;
         }

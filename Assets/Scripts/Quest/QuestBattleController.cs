@@ -5,32 +5,33 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Cysharp.Threading.Tasks;
+using Dialog;
 
 
 namespace Quest
 {
-    
-public class Character
-{
-    public Character(int speed, int hp)
+    public class Character
     {
-        this.speed = speed;
-        this.hp = hp;
+        public Character(int speed, int hp)
+        {
+            this.speed = speed;
+            this.hp = hp;
+        }
+
+        private int speed;
+        public int hp;
+
+        public int GetSpeed()
+        {
+            return speed;
+        }
+
+        public int GetHp()
+        {
+            return hp;
+        }
     }
 
-    private int speed;
-    public int hp;
-
-    public int GetSpeed()
-    {
-        return speed;
-    }
-
-    public int GetHp()
-    {
-        return hp;
-    }
-}
     public class QuestBattleController : MonoBehaviour
     {
         [SerializeField] private Text resultText;
@@ -39,11 +40,14 @@ public class Character
         [SerializeField] private Text myCharacter2HpText;
         [SerializeField] private Text enemy2HpText;
         [SerializeField] private Button nextButton;
-        
+        [SerializeField] private Canvas canvas;
+        [SerializeField] private OkCancelDialog okCancelDialog;
+
         Text[] allyHpTexts;
         Text[] enemyHpTexts;
 
-        private Character[] enemies = new Character[] {new Character(speed: 1, hp: 20), new Character(speed: 1, hp: 20),};
+        private Character[] enemies = new Character[]
+            {new Character(speed: 1, hp: 20), new Character(speed: 1, hp: 20),};
 
         private Character[] myCharacters = new Character[]
             {new Character(speed: 5, hp: 20), new Character(speed: 5, hp: 20)};
@@ -70,6 +74,7 @@ public class Character
         private bool isBattleEnded = false;
 
         private double adt;
+
         void Update()
         {
             if (!isBattleEnded)
@@ -82,9 +87,10 @@ public class Character
                     {
                         adt = 0;
                     }
+
                     // 攻撃をしかけるキャラを決める
                     int characterIndex = battleRule.CanCharacterAttacks(myCharacters, adt);
-                    if(characterIndex != -1)
+                    if (characterIndex != -1)
                     {
                         // 攻撃対象を決める
                         int enemyIndex = battleRule.DecideAttackObject(enemies);
@@ -116,11 +122,11 @@ public class Character
                     if (!isBattleEnded)
                     {
                         // 攻撃をしかけるキャラを決める
-                        int enemyCharacterIndex =  battleRule.CanCharacterAttacks(enemies, adt);
+                        int enemyCharacterIndex = battleRule.CanCharacterAttacks(enemies, adt);
                         if (enemyCharacterIndex != -1)
                         {
                             // 攻撃対象を決める
-                            int allyIndex =  battleRule.DecideAttackObject(myCharacters);
+                            int allyIndex = battleRule.DecideAttackObject(myCharacters);
                             // 攻撃計算をする
                             Debug.Log("NPCの攻撃！");
                             Debug.Log(dt);
@@ -144,6 +150,7 @@ public class Character
                             SendBattleResult(1, false);
                         }
                     }
+
                     dt = 0.0f;
                 }
             }
@@ -151,19 +158,29 @@ public class Character
 
 
         async void SendBattleResult(int questId, bool isCleared)
+        {
+            var api = new QuestApi();
+            var returnedValue = await api.PostQuestResult(questId, isCleared);
+            if (returnedValue)
             {
-                var api = new QuestApi();
-                var returnedValue = await api.PostQuestResult(questId, isCleared);
-                if (returnedValue)
-                {
-                    EnableNextButton();
-                }
+                EnableNextButton();
             }
-
-            void EnableNextButton()
+            else
             {
-                nextButton.interactable = true;
-                nextButton.onClick.AddListener(() => SceneManager.LoadScene("QuestListScene"));
+                ShowDialog();
             }
         }
+
+        void EnableNextButton()
+        {
+            nextButton.interactable = true;
+            nextButton.onClick.AddListener(() => SceneManager.LoadScene("QuestListScene"));
+        }
+
+        void ShowDialog()
+        {
+            var _dialog = Instantiate(okCancelDialog);
+            _dialog.transform.SetParent(canvas.transform, false);
+        }
     }
+}
