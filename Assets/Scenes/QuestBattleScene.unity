@@ -1308,7 +1308,7 @@ MonoBehaviour:
   enemy2HpText: {fileID: 1170843663}
   nextButton: {fileID: 1335518594}
   canvas: {fileID: 1662340146}
-  okCancelDialog: {fileID: 3240104895141903197, guid: 4c4a6ca6826c441efa0cb7d11bd48960,
+  okCancelDialog: {fileID: 3240104895141903197, guid: cc0def31031fe4ad0b42e3d0956c0c38,
     type: 3}
   questId: 0
 --- !u!1 &2095185181

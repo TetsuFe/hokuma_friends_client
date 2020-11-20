@@ -156,7 +156,6 @@ namespace Quest
             }
         }
 
-
         async void SendBattleResult(int questId, bool isCleared)
         {
             var api = new QuestApi();
@@ -179,8 +178,7 @@ namespace Quest
 
         void ShowDialog()
         {
-            var _dialog = Instantiate(okCancelDialog);
-            _dialog.transform.SetParent(canvas.transform, false);
+            Instantiate(okCancelDialog).transform.SetParent(canvas.transform, false);
         }
     }
 }
