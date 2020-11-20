@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript2 : MonoBehaviour
+public class BackgroundImage : MonoBehaviour
 {
     /// <summary>
     /// 縦横比を無視して全画面にするか
