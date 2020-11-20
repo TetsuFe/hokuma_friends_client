@@ -10,6 +10,7 @@
             <e p="LoginService.cs" t="Include" />
             <e p="SignupController.cs" t="Include" />
           </e>
+          <e p="BackgroundImage.cs" t="Include" />
           <e p="Dialog" t="Include">
             <e p="LoginErrorDialog.cs" t="Include" />
             <e p="OkCancelDialog.cs" t="Include" />
@@ -18,13 +19,12 @@
             <e p="GachaController.cs" t="Include" />
             <e p="GachaListController.cs" t="Include" />
           </e>
-          <e p="MenuScene" t="Include">
+          <e p="Menu" t="Include">
             <e p="MenuController.cs" t="Include" />
           </e>
           <e p="MyCharacters" t="Include">
             <e p="MyCharacters.cs" t="Include" />
           </e>
-          <e p="NewBehaviourScript2.cs" t="Include" />
           <e p="Quest" t="Include">
             <e p="BattleRule.cs" t="Include" />
             <e p="QuestApi.cs" t="Include" />
@@ -38,8 +38,8 @@
             <e p="StoryController.cs" t="Include" />
             <e p="StoryListController.cs" t="Include" />
           </e>
-          <e p="TitlePage" t="Include">
-            <e p="TitlePageController.cs" t="Include" />
+          <e p="Title" t="Include">
+            <e p="TitleController.cs" t="Include" />
           </e>
         </e>
       </e>
