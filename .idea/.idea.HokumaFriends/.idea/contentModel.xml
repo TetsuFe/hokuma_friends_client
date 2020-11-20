@@ -11,6 +11,7 @@
             <e p="SignupController.cs" t="Include" />
           </e>
           <e p="Dialog" t="Include">
+            <e p="LoginErrorDialog.cs" t="Include" />
             <e p="OkCancelDialog.cs" t="Include" />
           </e>
           <e p="Gacha" t="Include">
@@ -23,8 +24,6 @@
           <e p="MyCharacters" t="Include">
             <e p="MyCharacters.cs" t="Include" />
           </e>
-          <e p="NewBehaviourScript.cs" t="Include" />
-          <e p="NewBehaviourScript1.cs" t="Include" />
           <e p="NewBehaviourScript2.cs" t="Include" />
           <e p="Quest" t="Include">
             <e p="BattleRule.cs" t="Include" />
