@@ -3,9 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using GachaController.Auth;
+using Dialog;
 
 public class TitlePageController : MonoBehaviour
 {
+    [SerializeField] private LoginErrorDialog dialog;
+
+    [SerializeField] private Canvas parent;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,17 +28,22 @@ public class TitlePageController : MonoBehaviour
 
     IEnumerator Login()
     {
-            var loginService = new LoginService();
-            var coroutine = loginService.LogihWithCredential();
-            yield return StartCoroutine(coroutine);
-            var isSuccess = (bool) coroutine.Current;
-            if (isSuccess)
-            {
-                SceneManager.LoadScene("MenuScene");
-            }
-            else
-            {
-                SceneManager.LoadScene("LoginScene");
-            }
+        var loginService = new LoginService();
+        var coroutine = loginService.LogihWithCredential();
+        yield return StartCoroutine(coroutine);
+        var isSuccess = (bool) coroutine.Current;
+        if (isSuccess)
+        {
+            SceneManager.LoadScene("MenuScene");
+        }
+        else
+        {
+            ShowLoginFailedDialog();
+        }
+    }
+
+    void ShowLoginFailedDialog()
+    {
+        Instantiate(dialog).transform.SetParent(parent.transform, false);
     }
 }
