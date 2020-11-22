@@ -1,4 +1,5 @@
 using System.Collections;
+using api;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
@@ -49,7 +50,7 @@ namespace GachaController.Auth
                 form.AddField("email", email);
                 form.AddField("name", username);
                 form.AddField("password", password);
-                var url = "http://localhost:8000/api/register";
+                var url = ApiHostName.instance.hostName + "/api/register";
                 var response = UnityWebRequest.Post(url, form);
                 yield return response.Send();
                 var accessToken = JsonUtility.FromJson<Token>(response.downloadHandler.text);

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using api;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
@@ -42,7 +43,7 @@ public class MyCharacters : MonoBehaviour
 
     IEnumerator FetchMyCharacters()
     {
-        var request = UnityWebRequest.Get("http://localhost:8000/api/myCharacters");
+        var request = UnityWebRequest.Get(ApiHostName.instance.hostName + "/api/myCharacters");
         const string accessTokenKey = "accessTokenKey";
         Debug.Log(PlayerPrefs.GetString(accessTokenKey));
         request.SetRequestHeader("Authorization", "Bearer " + PlayerPrefs.GetString(accessTokenKey));

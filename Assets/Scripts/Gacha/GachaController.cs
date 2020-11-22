@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using api;
 using GachaController.Auth;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -40,7 +41,7 @@ namespace GachaController
             //URLをGETで用意
             var webRequest =
                 UnityWebRequest.Get(
-                    "http://localhost:8000/api/gacha/platinum/");
+                    ApiHostName.instance.hostName + "/api/gacha/platinum/");
             //URLに接続して結果が戻ってくるまで待機
             webRequest.SetRequestHeader("Authorization", "Bearer "+(new LoginService()).LoadAccessToken());
             yield return webRequest.SendWebRequest();
