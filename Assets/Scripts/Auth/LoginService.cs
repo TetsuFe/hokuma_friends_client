@@ -1,5 +1,6 @@
 using UnityEngine.Networking;
 using System.Collections;
+using api;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -30,7 +31,7 @@ namespace GachaController.Auth
             }
             else
             {
-                var url = "http://localhost:8000/api/auth/login";
+                var url = ApiHostName.instance.hostName + "/api/auth/login";
                 WWWForm form = new WWWForm();
                 form.AddField("email", email);
                 form.AddField("password", password);
@@ -62,7 +63,7 @@ namespace GachaController.Auth
         public IEnumerator LogihWithCredential()
         {
             var accessToken = LoadAccessToken();
-            var request = UnityWebRequest.Get("http://localhost:8000/api/auth/me");
+            var request = UnityWebRequest.Get(ApiHostName.instance.hostName + "/api/auth/me");
             request.SetRequestHeader("Authorization", "Bearer " + accessToken);
             request.SetRequestHeader("Content-Type", "application/json");
             yield return request.SendWebRequest();

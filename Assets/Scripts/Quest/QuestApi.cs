@@ -1,4 +1,5 @@
 using System;
+using api;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using GachaController.Auth;
@@ -27,7 +28,7 @@ namespace Quest
             var json = JsonUtility.ToJson(data);
             byte[] byteData = System.Text.Encoding.UTF8.GetBytes(json);
             
-            var url = "http://localhost:8000/api/questResult/updateQuestClearResult";
+            var url = ApiHostName.instance.hostName + "/api/questResult/updateQuestClearResult";
             UnityWebRequest request = new UnityWebRequest(url, "POST");
             request.uploadHandler = (UploadHandler) new UploadHandlerRaw(byteData);
             request.downloadHandler = (DownloadHandler) new DownloadHandlerBuffer();
