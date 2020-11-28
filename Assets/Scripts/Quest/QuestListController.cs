@@ -37,8 +37,6 @@ namespace Quest
                 text.text = quest.name;
                 var button = obj.GetComponent<Button>();
                 button.onClick.AddListener(() => LoadQuestBattleScene(quest.id));
-                Debug.Log(quest.name);
-                Debug.Log(i);
                 obj.transform.SetParent(canvas.transform, false);
                 i++;
             }
