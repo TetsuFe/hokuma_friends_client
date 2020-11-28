@@ -26,6 +26,7 @@
             <e p="GachaController.cs" t="Include" />
             <e p="GachaListController.cs" t="Include" />
           </e>
+          <e p="ListButtonItem.cs" t="Include" />
           <e p="Menu" t="Include">
             <e p="MenuController.cs" t="Include" />
           </e>
@@ -34,9 +35,11 @@
           </e>
           <e p="Quest" t="Include">
             <e p="BattleRule.cs" t="Include" />
+            <e p="Quest.cs" t="Include" />
             <e p="QuestApi.cs" t="Include" />
             <e p="QuestBattleController.cs" t="Include" />
             <e p="QuestListController.cs" t="Include" />
+            <e p="QuestRepository.cs" t="Include" />
           </e>
           <e p="Story" t="Include">
             <e p="MessageArea.cs" t="Include" />

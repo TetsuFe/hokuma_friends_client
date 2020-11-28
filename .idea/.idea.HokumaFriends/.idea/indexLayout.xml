@@ -21,7 +21,6 @@
       <Path>Build</Path>
       <Path>Library</Path>
       <Path>Logs</Path>
-      <Path>SQLiteUnityKit</Path>
       <Path>Temp</Path>
       <Path>TemplateData</Path>
       <Path>UserSettings</Path>
