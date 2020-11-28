@@ -116,7 +116,7 @@ namespace Quest
                     {
                         resultText.text = "WIN!";
                         isBattleEnded = true;
-                        SendBattleResult(1, true);
+                        SendBattleResult(questId, true);
                     }
 
                     if (!isBattleEnded)
@@ -147,7 +147,7 @@ namespace Quest
                         {
                             resultText.text = "LOSE..";
                             isBattleEnded = true;
-                            SendBattleResult(1, false);
+                            SendBattleResult(questId, false);
                         }
                     }
 

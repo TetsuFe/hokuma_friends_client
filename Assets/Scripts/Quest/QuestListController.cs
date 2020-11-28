@@ -6,24 +6,45 @@ using UnityEngine.UI;
 
 namespace Quest
 {
-
     public class QuestListController : MonoBehaviour
     {
         [SerializeField] private Button backToMenuButton;
 
         [SerializeField] private Button moveToQuestBattleButton;
+        [SerializeField] private Canvas canvas;
+        [SerializeField] private ListButtonItem listButtonItem;
+        private int nextQuestId;
 
         // Start is called before the first frame update
         void Start()
         {
             backToMenuButton.onClick.AddListener(LoadMenuScene);
-            moveToQuestBattleButton.onClick.AddListener(LoadQuestBattleScene);
+            SetUpQuestList();
+        }
+
+        void SetUpQuestList()
+        {
+            var repository = new QuestRepository();
+            var quests = repository.GetAll();
+            Debug.Log(quests);
+
+            int i = 1;
+            foreach (var quest in quests)
+            {
+                var obj = Instantiate(listButtonItem);
+                obj.transform.localPosition = new Vector3(0, -100 * i);
+                var text = obj.GetComponentInChildren<Text>();
+                text.text = quest.name;
+                var button = obj.GetComponent<Button>();
+                button.onClick.AddListener(() => LoadQuestBattleScene(quest.id));
+                obj.transform.SetParent(canvas.transform, false);
+                i++;
+            }
         }
 
         // Update is called once per frame
         void Update()
         {
-
         }
 
         private void LoadMenuScene()
@@ -31,24 +52,20 @@ namespace Quest
             SceneManager.LoadScene("MenuScene");
         }
 
-        private void LoadQuestBattleScene()
+        private void LoadQuestBattleScene(int questId)
         {
             SceneManager.sceneLoaded += QuestBattleSceneLoaded;
             SceneManager.LoadScene("QuestBattleScene");
+            nextQuestId = questId;
         }
 
         private void QuestBattleSceneLoaded(Scene next, LoadSceneMode mode)
         {
-            // シーン切り替え後のスクリプトを取得
             var controller = GameObject.FindWithTag("QuestBattleControllerObject")
                 .GetComponent<QuestBattleController>();
-
-            // データを渡す処理
-            controller.questId = 1;
-
+            controller.questId = nextQuestId;
             // イベントから削除
             SceneManager.sceneLoaded -= QuestBattleSceneLoaded;
         }
     }
-
 }
