@@ -12,7 +12,6 @@ namespace Quest
     {
         [SerializeField] private Button backToMenuButton;
 
-        [SerializeField] private Button moveToQuestBattleButton;
         [SerializeField] private Canvas canvas;
         [SerializeField] private ListButtonItem listButtonItem;
         private int nextQuestId;
