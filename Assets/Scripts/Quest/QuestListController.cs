@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -10,7 +12,6 @@ namespace Quest
     {
         [SerializeField] private Button backToMenuButton;
 
-        [SerializeField] private Button moveToQuestBattleButton;
         [SerializeField] private Canvas canvas;
         [SerializeField] private ListButtonItem listButtonItem;
         private int nextQuestId;
@@ -22,19 +23,29 @@ namespace Quest
             SetUpQuestList();
         }
 
-        void SetUpQuestList()
+        async void SetUpQuestList()
         {
+            var api = new QuestApi();
+            var questResults = await api.GetAllQuestResult();
+
             var repository = new QuestRepository();
             var quests = repository.GetAll();
-            Debug.Log(quests);
 
             int i = 1;
             foreach (var quest in quests)
             {
                 var obj = Instantiate(listButtonItem);
-                obj.transform.localPosition = new Vector3(0, -100 * i);
+                obj.transform.localPosition = new Vector3(0, -50 * i);
                 var text = obj.GetComponentInChildren<Text>();
                 text.text = quest.name;
+                foreach (var questResult in questResults)
+                {
+                    if (quest.id == questResult.questId)
+                    {
+                        text.text += " (クリア済み)";
+                    }
+                }
+
                 var button = obj.GetComponent<Button>();
                 button.onClick.AddListener(() => LoadQuestBattleScene(quest.id));
                 obj.transform.SetParent(canvas.transform, false);
