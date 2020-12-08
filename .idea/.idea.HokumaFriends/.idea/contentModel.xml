@@ -45,6 +45,7 @@
             <e p="MessageArea.cs" t="Include" />
             <e p="MessageAreaClickHandler.cs" t="Include" />
             <e p="MessageProceedManager.cs" t="Include" />
+            <e p="sentence.cs" t="Include" />
             <e p="StoryController.cs" t="Include" />
             <e p="StoryListController.cs" t="Include" />
           </e>
