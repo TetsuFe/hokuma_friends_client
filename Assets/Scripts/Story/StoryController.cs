@@ -41,6 +41,7 @@ namespace Story
         void SetupMessages()
         {
             messageArea.text = "";
+            _messageProceedManager = _messageProceedManager.UpdateSentences();
             _messageProceedManager.SetupMessages();
         }
 

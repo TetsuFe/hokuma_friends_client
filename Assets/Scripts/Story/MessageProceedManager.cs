@@ -7,12 +7,18 @@ namespace Story
             this.sentences = sentences;
         }
 
-        public static readonly MessageProceedManager Instance = new MessageProceedManager(
+        public static MessageProceedManager Instance = new MessageProceedManager(
+            new Sentence[]
+            {
+                new Sentence("", "", "", ""),
+            }
+            /*
             new Sentence[]
             {
                 new Sentence("赤ホクマ", "こんにちはクマ。", "", ""),
                 new Sentence("赤ホクマ", "さようならクマ。", "", ""),
             }
+            */
         );
 
         private string oneMessage;
@@ -40,17 +46,24 @@ namespace Story
                 }
             }
 
-            return oneMessage.Substring(0,messageCharIndex);
+            return oneMessage.Substring(0, messageCharIndex);
         }
 
         public void SetupNextMessage()
         {
-            if (messagesIndex < sentences.Length-1)
+            if (messagesIndex < sentences.Length - 1)
             {
                 messagesIndex++;
                 oneMessage = sentences[messagesIndex].body;
                 messageCharIndex = 0;
             }
+        }
+
+        public MessageProceedManager UpdateSentences()
+        {
+            return new MessageProceedManager(
+                new StoryRepository().Get(1)
+            );
         }
     }
 }
