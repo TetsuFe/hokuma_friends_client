@@ -378,7 +378,7 @@ GameObject:
   - component: {fileID: 490149175}
   m_Layer: 0
   m_Name: StoryControllerObject
-  m_TagString: Untagged
+  m_TagString: StoryControllerObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -411,6 +411,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   messageArea: {fileID: 266679233}
   characterName: {fileID: 860273107}
+  storyId: 0
 --- !u!1 &860273105
 GameObject:
   m_ObjectHideFlags: 0

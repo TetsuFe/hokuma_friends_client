@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - QuestBattleControllerObject
+  - StoryControllerObject
   layers:
   - Default
   - TransparentFX
