@@ -48,6 +48,7 @@
             <e p="sentence.cs" t="Include" />
             <e p="Story.cs" t="Include" />
             <e p="StoryController.cs" t="Include" />
+            <e p="StoryListButton.cs" t="Include" />
             <e p="StoryListController.cs" t="Include" />
             <e p="StoryRepository.cs" t="Include" />
           </e>
