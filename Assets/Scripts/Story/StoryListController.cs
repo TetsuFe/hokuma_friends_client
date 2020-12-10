@@ -41,7 +41,7 @@ namespace Story
             {
                 var storyListButtonObj = Instantiate(storyListButton);
                 var text = storyListButtonObj.GetComponentInChildren<Text>();
-                text.text = story.id.ToString();
+                text.text = story.title;
                 storyListButtonObj.transform.localPosition = new Vector3(0, -50*i);
                 var button = storyListButtonObj.GetComponent<Button>();
                 button.onClick.AddListener(LoadStoryScene);

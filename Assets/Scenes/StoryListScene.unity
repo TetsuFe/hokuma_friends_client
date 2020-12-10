@@ -604,9 +604,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33c37a50ee5134834ad3ed8db2e59aa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  storyListButton: {fileID: 0}
+  storyListButton: {fileID: 3909597433768310947, guid: 7bd4bfd2435d74f48b3764d3e31d47a5,
+    type: 3}
   backToMenuButton: {fileID: 1410684459}
-  canvas: {fileID: 0}
+  canvas: {fileID: 1750969960}
 --- !u!4 &1818192211
 Transform:
   m_ObjectHideFlags: 0

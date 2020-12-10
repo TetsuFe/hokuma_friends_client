@@ -12,7 +12,7 @@ namespace Story
         {
             var sql = "select * from story";
             var dataTable = sqlDB.ExecuteQuery(sql);
-            return dataTable.Rows.Select((r) => new Story((int)r["id"], JsonUtility.FromJson<Sentences>((string)r["sentences"]))).ToArray();
+            return dataTable.Rows.Select((r) => new Story((int)r["id"], (string)r["title"], JsonUtility.FromJson<Sentences>((string)r["sentences"]))).ToArray();
         }
         public Sentence[] Get(int id)
         {
@@ -20,7 +20,7 @@ namespace Story
             DataTable dataTable = sqlDB.ExecuteQuery(sql);
             foreach (var row in dataTable.Rows)
             {
-                var story = new Story((int) row["id"], JsonUtility.FromJson<Sentences>((string)row["sentences"]));
+                var story = new Story((int) row["id"], (string)row["title"], JsonUtility.FromJson<Sentences>((string)row["sentences"]));
                 return story.sentences.sentences;
             }
             return null;
