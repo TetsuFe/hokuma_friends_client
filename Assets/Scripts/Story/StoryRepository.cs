@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Script;
 using UnityEngine;
 
@@ -6,9 +7,15 @@ namespace Story
 {
     public class StoryRepository
     {
+        SqliteDatabase sqlDB = new SqliteDatabase("config.db");
+        public Story[] GetAll()
+        {
+            var sql = "select * from story";
+            var dataTable = sqlDB.ExecuteQuery(sql);
+            return dataTable.Rows.Select((r) => new Story((int)r["id"], JsonUtility.FromJson<Sentences>((string)r["sentences"]))).ToArray();
+        }
         public Sentence[] Get(int id)
         {
-            SqliteDatabase sqlDB = new SqliteDatabase("config.db");
             var sql = "select * from story where id="+id;
             DataTable dataTable = sqlDB.ExecuteQuery(sql);
             foreach (var row in dataTable.Rows)
