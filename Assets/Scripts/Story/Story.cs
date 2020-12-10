@@ -6,12 +6,14 @@ namespace Story
     public class Story
     {
         public int id;
+        public string title;
         public Sentences sentences;
 
-        public Story(int id, Sentences sentences)
+        public Story(int id, string title, Sentences sentences)
         {
             this.id = id;
             this.sentences = sentences;
+            this.title = title;
         }
         
     }

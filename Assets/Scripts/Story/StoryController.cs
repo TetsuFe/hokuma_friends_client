@@ -14,12 +14,14 @@ namespace Story
 
         private double dt = 0.0f;
         private MessageProceedManager _messageProceedManager = MessageProceedManager.Instance;
+        public int storyId;
 
         // Start is called before the first frame update
         void Start()
         {
             SetupMessages();
             characterName.text = "赤ホクマ";
+            Debug.Log(storyId);
         }
 
         // Update is called once per frame
@@ -41,7 +43,7 @@ namespace Story
         void SetupMessages()
         {
             messageArea.text = "";
-            _messageProceedManager = _messageProceedManager.UpdateSentences();
+            _messageProceedManager = _messageProceedManager.UpdateSentences(storyId);
             _messageProceedManager.SetupMessages();
         }
 

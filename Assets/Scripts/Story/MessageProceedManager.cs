@@ -59,10 +59,10 @@ namespace Story
             }
         }
 
-        public MessageProceedManager UpdateSentences()
+        public MessageProceedManager UpdateSentences(int storyId)
         {
             return new MessageProceedManager(
-                new StoryRepository().Get(1)
+                new StoryRepository().Get(storyId)
             );
         }
     }
