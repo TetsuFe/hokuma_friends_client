@@ -47,7 +47,7 @@ namespace Story
         public async void UpdateFromMasterData()
         {
             var localDataVersion = new LocalDataVersionRepository().GetLocalDataVersion();
-            var masterDataVersion = await new MasterDataVersionApi().GetMasterDataVersion();
+            var masterDataVersion = await new MasterDataVersionApi().GetStoryMasterDataVersion();
             var stories = await new StoryApi().GetAll();
             foreach (var story in stories)
             {
