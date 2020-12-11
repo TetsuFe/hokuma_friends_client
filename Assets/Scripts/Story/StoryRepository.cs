@@ -48,10 +48,10 @@ namespace Story
         {
             var localDataVersion = new LocalDataVersionRepository().GetLocalDataVersion();
             var masterDataVersion = await new MasterDataVersionApi().GetStoryMasterDataVersion();
-            var stories = await new StoryApi().GetAll();
-            foreach (var story in stories)
+            if (localDataVersion < masterDataVersion)
             {
-                if (localDataVersion < masterDataVersion)
+                var stories = await new StoryApi().GetAll();
+                foreach (var story in stories)
                 {
                     Debug.Log(story.id);
                     Debug.Log(story.title);
