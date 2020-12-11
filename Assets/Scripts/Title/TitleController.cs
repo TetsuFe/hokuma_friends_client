@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using GachaController.Auth;
 using Dialog;
+using Story;
 
 namespace Title
 {
@@ -16,6 +17,8 @@ namespace Title
         // Start is called before the first frame update
         void Start()
         {
+            // new StoryRepository().Insert();
+            new StoryRepository().UpdateFromMasterData();
         }
 
         // Update is called once per frame
