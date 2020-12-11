@@ -18,6 +18,10 @@
             <e p="SignupController.cs" t="Include" />
           </e>
           <e p="BackgroundImage.cs" t="Include" />
+          <e p="DataVersion" t="Include">
+            <e p="LocalDataVersionRepository.cs" t="Include" />
+            <e p="MasterDataVersionApi.cs" t="Include" />
+          </e>
           <e p="Dialog" t="Include">
             <e p="LoginErrorDialog.cs" t="Include" />
             <e p="OkCancelDialog.cs" t="Include" />
@@ -47,6 +51,7 @@
             <e p="MessageProceedManager.cs" t="Include" />
             <e p="sentence.cs" t="Include" />
             <e p="Story.cs" t="Include" />
+            <e p="StoryApi.cs" t="Include" />
             <e p="StoryController.cs" t="Include" />
             <e p="StoryListButton.cs" t="Include" />
             <e p="StoryListController.cs" t="Include" />
