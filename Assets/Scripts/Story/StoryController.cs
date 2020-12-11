@@ -20,7 +20,6 @@ namespace Story
         void Start()
         {
             SetupMessages();
-            characterName.text = "赤ホクマ";
             Debug.Log(storyId);
         }
 
@@ -31,6 +30,11 @@ namespace Story
             if (dt > 0.1f)
             {
                 var message = _messageProceedManager.GetCurrentPartialMessage();
+                var characterNameText = _messageProceedManager.GetCurrentCharacterName();
+                if (characterNameText != null)
+                {
+                    characterName.text = characterNameText;
+                }
                 if (message != null)
                 {
                     messageArea.text = message;
