@@ -65,5 +65,10 @@ namespace Story
                 new StoryRepository().Get(storyId)
             );
         }
+
+        public string GetCurrentCharacterName()
+        {
+            return sentences[messagesIndex].characterName;
+        }
     }
 }
