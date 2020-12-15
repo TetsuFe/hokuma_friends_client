@@ -46,16 +46,20 @@
             <e p="QuestRepository.cs" t="Include" />
           </e>
           <e p="Story" t="Include">
-            <e p="MessageArea.cs" t="Include" />
-            <e p="MessageAreaClickHandler.cs" t="Include" />
-            <e p="MessageProceedManager.cs" t="Include" />
-            <e p="sentence.cs" t="Include" />
-            <e p="Story.cs" t="Include" />
+            <e p="Models" t="Include">
+              <e p="MessageProceedManager.cs" t="Include" />
+              <e p="sentence.cs" t="Include" />
+              <e p="Story.cs" t="Include" />
+            </e>
             <e p="StoryApi.cs" t="Include" />
-            <e p="StoryController.cs" t="Include" />
-            <e p="StoryListButton.cs" t="Include" />
-            <e p="StoryListController.cs" t="Include" />
             <e p="StoryRepository.cs" t="Include" />
+            <e p="Views" t="Include">
+              <e p="MessageArea.cs" t="Include" />
+              <e p="MessageAreaClickHandler.cs" t="Include" />
+              <e p="StoryController.cs" t="Include" />
+              <e p="StoryListButton.cs" t="Include" />
+              <e p="StoryListController.cs" t="Include" />
+            </e>
           </e>
           <e p="Title" t="Include">
             <e p="TitleController.cs" t="Include" />
