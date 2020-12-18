@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using GachaController.Auth;
 using Dialog;
 using Story;
+using UnityEngine.AddressableAssets;
 
 namespace Title
 {
@@ -18,16 +19,19 @@ namespace Title
         void Start()
         {
             // new StoryRepository().Insert();
-            new StoryRepository().UpdateFromMasterData();
+            // new StoryRepository().UpdateFromMasterData();
+            // var key    = "http://localhost:8000/TestBackgroundImage.prefab";
+            // var handle = Addressables.LoadAssetAsync<GameObject>("Assets/TestBackgroundImage.prefab");
         }
-
+        
         // Update is called once per frame
         void Update()
         {
             if (Input.touchCount != 0 || Input.GetMouseButtonUp(0))
             {
                 Debug.Log("touched");
-                StartCoroutine(Login());
+                var handle = Addressables.DownloadDependenciesAsync( "Assets/TestBackgroundImage.prefab", true );
+                handle.Completed += _ => StartCoroutine(Login());
             }
         }
 
