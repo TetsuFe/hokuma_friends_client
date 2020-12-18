@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Net.Http;
+using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
 
 namespace Story
@@ -10,6 +12,8 @@ namespace Story
     {
         [SerializeField] private Text messageArea;
         [SerializeField] private Text characterName;
+        [SerializeField] private Canvas canvas;
+        [SerializeField] private TestBackgroundImage prefab;
 
 
         private double dt = 0.0f;
@@ -19,6 +23,7 @@ namespace Story
         // Start is called before the first frame update
         void Start()
         {
+            SetupBackgroundImage();
             SetupMessages();
             Debug.Log(storyId);
         }
@@ -49,6 +54,18 @@ namespace Story
             messageArea.text = "";
             _messageProceedManager = _messageProceedManager.UpdateSentences(storyId);
             _messageProceedManager.SetupMessages();
+        }
+
+        void SetupBackgroundImage()
+        {
+            // Instantiate(prefab).transform.SetParent(canvas.transform);
+            var handle = Addressables.LoadAssetAsync<GameObject>("Assets/TestBackgroundImage.prefab");
+            handle.Completed += (h) =>
+            {
+                var instance = Instantiate(h.Result);
+                instance.transform.SetParent(canvas.transform, false);
+                instance.transform.SetAsFirstSibling();
+            };
         }
 
         public void SetupNextMessage()
