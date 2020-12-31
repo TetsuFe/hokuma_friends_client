@@ -9,15 +9,17 @@
           <e p="SqliteDatabase.cs" t="Include" />
         </e>
         <e p="Scripts" t="Include">
-          <e p="api" t="Include">
-            <e p="ApiHostName.cs" t="Include" />
-          </e>
           <e p="Auth" t="Include">
             <e p="Login.cs" t="Include" />
             <e p="LoginService.cs" t="Include" />
             <e p="SignupController.cs" t="Include" />
           </e>
           <e p="BackgroundImage.cs" t="Include" />
+          <e p="Common" t="Include">
+            <e p="api" t="Include">
+              <e p="ApiHostName.cs" t="Include" />
+            </e>
+          </e>
           <e p="DataVersion" t="Include">
             <e p="LocalDataVersionRepository.cs" t="Include" />
             <e p="MasterDataVersionApi.cs" t="Include" />
@@ -65,6 +67,7 @@
             <e p="TitleController.cs" t="Include" />
           </e>
         </e>
+        <e p="TestBackgroundImage.cs" t="Include" />
       </e>
       <e p="HokumaFriends.sln" t="IncludeFlat" />
       <e p="obj" t="ExcludeRecursive" />

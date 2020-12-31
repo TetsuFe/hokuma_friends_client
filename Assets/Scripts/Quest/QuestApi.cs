@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using api;
+using Common.Api;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using GachaController.Auth;

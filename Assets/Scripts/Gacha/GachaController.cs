@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using api;
+using Common.Api;
 using GachaController.Auth;
 using UnityEngine;
 using UnityEngine.Networking;

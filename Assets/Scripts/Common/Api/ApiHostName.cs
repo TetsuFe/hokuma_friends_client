@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace api
+namespace Common.Api
 {
     public class ApiHostName
     {
