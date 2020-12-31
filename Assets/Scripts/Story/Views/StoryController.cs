@@ -4,6 +4,7 @@ using System.Net.Http;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Story
@@ -34,6 +35,10 @@ namespace Story
             dt += Time.deltaTime;
             if (dt > 0.1f)
             {
+                if (_messageProceedManager.IsStoryEnded())
+                {
+                    SceneManager.LoadScene("StoryListScene");
+                }
                 var message = _messageProceedManager.GetCurrentPartialMessage();
                 var characterNameText = _messageProceedManager.GetCurrentCharacterName();
                 if (characterNameText != null)

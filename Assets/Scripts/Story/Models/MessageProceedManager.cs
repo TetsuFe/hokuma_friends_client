@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace Story
 {
     class MessageProceedManager
@@ -5,6 +7,8 @@ namespace Story
         private MessageProceedManager(Sentence[] sentences)
         {
             this.sentences = sentences;
+            Debug.Log("instanced");
+            _messagesIndex = 0;
         }
 
         public static MessageProceedManager Instance = new MessageProceedManager(
@@ -24,7 +28,7 @@ namespace Story
         private string oneMessage;
         private Sentence[] sentences;
         private int messageCharIndex = 0;
-        int messagesIndex = 0;
+        private static int _messagesIndex;
 
         public void SetupMessages()
         {
@@ -39,7 +43,7 @@ namespace Story
             }
             else if (messageCharIndex == oneMessage.Length)
             {
-                if (messagesIndex < sentences.Length - 1)
+                if (_messagesIndex < sentences.Length - 1)
                 {
                     // SetupNextMessage();
                     return null;
@@ -51,11 +55,14 @@ namespace Story
 
         public void SetupNextMessage()
         {
-            if (messagesIndex < sentences.Length - 1)
+            if (!IsStoryEnded())
             {
-                messagesIndex++;
-                oneMessage = sentences[messagesIndex].body;
-                messageCharIndex = 0;
+                _messagesIndex++;
+                if (!IsStoryEnded())
+                {
+                    oneMessage = sentences[_messagesIndex].body;
+                    messageCharIndex = 0;
+                }
             }
         }
 
@@ -68,7 +75,17 @@ namespace Story
 
         public string GetCurrentCharacterName()
         {
-            return sentences[messagesIndex].characterName;
+            if (!IsStoryEnded())
+            {
+                return sentences[_messagesIndex].characterName;
+            }
+
+            return "";
+        }
+
+        public bool IsStoryEnded()
+        {
+            return _messagesIndex == sentences.Length;
         }
     }
 }
