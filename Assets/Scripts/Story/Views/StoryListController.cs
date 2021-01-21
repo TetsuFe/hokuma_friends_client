@@ -45,9 +45,10 @@ namespace Story
             SceneManager.sceneLoaded -= StorySceneLoaded;
         }
 
-        void SetupStoryListView()
+        async void SetupStoryListView()
         {
             var storyList = new StoryRepository().GetAll();
+            var storyProgress = await new StoryProgressRepository().Get();
             int i = 0;
             foreach (var story in storyList)
             {
@@ -56,7 +57,15 @@ namespace Story
                 text.text = story.title;
                 storyListButtonObj.transform.localPosition = new Vector3(0, -50*i);
                 var button = storyListButtonObj.GetComponent<Button>();
-                button.onClick.AddListener(()=>LoadStoryScene(story.id));
+                Debug.Log(storyProgress.latest_readable);
+                if (story.id <= storyProgress.latest_readable)
+                {
+                    button.onClick.AddListener(()=>LoadStoryScene(story.id));
+                }
+                else
+                {
+                    button.interactable = false;
+                }
                 storyListButtonObj.transform.SetParent(canvas.transform, false);
                 i++;
             }
