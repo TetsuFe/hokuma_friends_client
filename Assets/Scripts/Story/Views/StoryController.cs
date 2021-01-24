@@ -38,6 +38,7 @@ namespace Story
                 if (_messageProceedManager.IsStoryEnded())
                 {
                     SceneManager.LoadScene("StoryListScene");
+                    new StoryApi().markStoryAsRead(storyId);
                 }
                 var message = _messageProceedManager.GetCurrentPartialMessage();
                 var characterNameText = _messageProceedManager.GetCurrentCharacterName();
