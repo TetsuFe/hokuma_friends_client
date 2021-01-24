@@ -1,6 +1,7 @@
 using System;
 using Common.Api;
 using Cysharp.Threading.Tasks;
+using GachaController.Auth;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -23,6 +24,16 @@ namespace Story
             Debug.Log(request.downloadHandler.text);
             Debug.Log(stories);
             return stories.stories;
+        }
+
+        public async UniTaskVoid markStoryAsRead(int storyId)
+        {
+            byte[] byteData = System.Text.Encoding.UTF8.GetBytes("{\"read_story_id\":"+$"{storyId}"+"}");
+            var request = new UnityWebRequest(ApiHostName.instance.hostName + "/api/auth/updateStoryProgress", "POST");
+            request.uploadHandler = (UploadHandler) new UploadHandlerRaw(byteData);
+            request.SetRequestHeader("Authorization", "Bearer "+(new LoginService()).LoadAccessToken());
+            request.SetRequestHeader("Content-Type", "application/json");
+            await request.SendWebRequest();
         }
     }
 }
