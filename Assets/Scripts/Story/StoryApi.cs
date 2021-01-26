@@ -10,12 +10,22 @@ namespace Story
     [Serializable]
     class Stories
     {
-        public Story2[] stories;
+        public MasterDataStory[] stories;
+    }
+    
+    [Serializable]
+    public class MasterDataStory
+    {
+        public int id;
+        public string title;
+        public string sentences;
+        public string created_at;
+        public string updated_at;
     }
 
     public class StoryApi
     {
-        public async UniTask<Story2[]> GetAll()
+        public async UniTask<MasterDataStory[]> GetAll()
         {
             // var request = UnityWebRequest.Get(ApiHostName.instance.hostName + "/api/stories");
             var request = UnityWebRequest.Get("http://localhost:8001" + "/api/stories");
