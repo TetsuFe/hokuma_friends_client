@@ -11,7 +11,16 @@ namespace Story
 
     public class StoryRepository
     {
+        private StoryRepository(){}
+        public static StoryRepository instance = new StoryRepository();
         SqliteDatabase sqlDB = new SqliteDatabase("config.db");
+
+        private StoryApi _storyApi = new StoryApi();
+        public float StoryListDownloadProgress
+        {
+            get { return _storyApi.StoryListDownloadProgress; }
+            set { _storyApi.StoryListDownloadProgress = value; }
+        }
 
         public Story[] GetAll()
         {
@@ -35,13 +44,13 @@ namespace Story
             return null;
         }
 
-        public async void UpdateFromMasterData()
+        public async void UpdateFromMasterDataIfNeeded()
         {
             var localDataVersion = new LocalDataVersionRepository().GetLocalDataVersion();
             var masterDataVersion = await new MasterDataVersionApi().GetStoryMasterDataVersion();
             if (localDataVersion < masterDataVersion)
             {
-                var stories = await new StoryApi().GetAll();
+                var stories = await _storyApi.GetAll();
                 foreach (var story in stories)
                 {
                     Debug.Log(story.id);
@@ -49,6 +58,10 @@ namespace Story
                     var sql = $"insert into story Values({story.id}, '{story.title}', '{story.sentences}')";
                     sqlDB.ExecuteNonQuery(sql);
                 }
+            }
+            else
+            {
+                StoryListDownloadProgress = 100;
             }
         }
     }

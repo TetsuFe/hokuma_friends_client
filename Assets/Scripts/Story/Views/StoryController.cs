@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Net.Http;
+using Dialog;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -15,6 +16,7 @@ namespace Story
         [SerializeField] private Text characterName;
         [SerializeField] private Canvas canvas;
         [SerializeField] private TestBackgroundImage prefab;
+        
 
 
         private double dt = 0.0f;
@@ -58,7 +60,9 @@ namespace Story
         void SetupMessages()
         {
             messageArea.text = "";
-            _messageProceedManager = _messageProceedManager.UpdateSentences(storyId);
+            var sentences = StoryRepository.instance.Get(storyId);
+            
+            _messageProceedManager = _messageProceedManager.SetupSentences(sentences);
             _messageProceedManager.SetupMessages();
         }
 

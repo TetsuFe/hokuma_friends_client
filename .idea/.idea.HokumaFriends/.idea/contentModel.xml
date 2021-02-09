@@ -4,6 +4,7 @@
     <e p="$PROJECT_DIR$" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="NewBehaviourScript.cs" t="Include" />
         <e p="Script" t="Include">
           <e p="DataTable.cs" t="Include" />
           <e p="SqliteDatabase.cs" t="Include" />
@@ -25,6 +26,8 @@
             <e p="MasterDataVersionApi.cs" t="Include" />
           </e>
           <e p="Dialog" t="Include">
+            <e p="DownloadIndicatorDIalog.cs" t="Include" />
+            <e p="IndicatorTime.cs" t="Include" />
             <e p="LoginErrorDialog.cs" t="Include" />
             <e p="OkCancelDialog.cs" t="Include" />
           </e>

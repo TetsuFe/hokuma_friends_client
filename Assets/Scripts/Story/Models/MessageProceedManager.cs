@@ -66,11 +66,9 @@ namespace Story
             }
         }
 
-        public MessageProceedManager UpdateSentences(int storyId)
+        public MessageProceedManager SetupSentences(Sentence[] newSentences)
         {
-            return new MessageProceedManager(
-                new StoryRepository().Get(storyId)
-            );
+            return new MessageProceedManager(newSentences);
         }
 
         public string GetCurrentCharacterName()
