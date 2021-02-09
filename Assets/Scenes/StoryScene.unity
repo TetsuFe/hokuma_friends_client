@@ -412,6 +412,8 @@ MonoBehaviour:
   characterName: {fileID: 860273107}
   canvas: {fileID: 318130726}
   prefab: {fileID: -1504838445236849904, guid: f6da21fbcb8944b35920ac3325761a1e, type: 3}
+  downloadIndicatorDialog: {fileID: 4161739917694004246, guid: 6397ed2749fbf454ca2d0d86564231fc,
+    type: 3}
   storyId: 0
 --- !u!1 &860273105
 GameObject:

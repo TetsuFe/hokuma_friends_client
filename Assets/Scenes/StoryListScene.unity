@@ -608,6 +608,8 @@ MonoBehaviour:
     type: 3}
   backToMenuButton: {fileID: 1410684459}
   canvas: {fileID: 1750969960}
+  downloadIndicatorDialog: {fileID: 4161739917694004246, guid: 6397ed2749fbf454ca2d0d86564231fc,
+    type: 3}
 --- !u!4 &1818192211
 Transform:
   m_ObjectHideFlags: 0

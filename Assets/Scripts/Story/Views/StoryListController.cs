@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Dialog;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -11,6 +12,7 @@ namespace Story
         [SerializeField] private StoryListButton storyListButton;
         [SerializeField] private Button backToMenuButton;
         [SerializeField] private Canvas canvas;
+        [SerializeField] private DownloadIndicatorDialog downloadIndicatorDialog;
         private int storyId;
 
         void Start()
@@ -47,7 +49,12 @@ namespace Story
 
         async void SetupStoryListView()
         {
-            var storyList = new StoryRepository().GetAll();
+            var instance = Instantiate(downloadIndicatorDialog);
+            instance.transform.SetParent(canvas.transform, false);
+            var storyRepository = StoryRepository.instance;
+            storyRepository.UpdateFromMasterDataIfNeeded();
+            var storyList = storyRepository.GetAll();
+
             var storyProgress = await new StoryProgressRepository().Get();
             int i = 0;
             foreach (var story in storyList)
@@ -69,6 +76,7 @@ namespace Story
                 storyListButtonObj.transform.SetParent(canvas.transform, false);
                 i++;
             }
+            instance.transform.SetAsLastSibling();
         }
     }
 }
